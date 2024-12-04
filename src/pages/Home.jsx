@@ -2,25 +2,9 @@ import React, { useState } from "react";
 import "../index.css";
 import Header from "../layouts/Header";
 import { Link } from "react-router-dom";
+import { Carousel } from "@material-tailwind/react";
 
 const Home = () => {
-  const images = [
-    './canard.jpg',
-    './orange.jpg',
-    './bavette.jpg',
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(1); // On commence par afficher l'image du centre
-
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
-  };
 
   return (
     <div>
@@ -48,49 +32,39 @@ const Home = () => {
           Nos dernières recettes
         </h2>
 
-        <div className="relative flex justify-between items-center w-full max-w-5xl mx-auto">
-          <div className="transition-transform duration-700 ease-in-out transform">
-            <img
-              src={images[(currentIndex - 1 + images.length) % images.length]}
-              alt="left-image"
-              className="w-[300px] h-[300px] object-cover rounded-lg"
-            />
-          </div>
-
-          <div className="transition-transform duration-700 ease-in-out transform">
-            <img
-              src={images[currentIndex]}
-              alt="center-image"
-              className="w-[350px] h-[350px] object-cover rounded-lg scale-110"
-            />
-          </div>
-
-          <div className="transition-transform duration-700 ease-in-out transform">
-            <img
-              src={images[(currentIndex + 1) % images.length]}
-              alt="right-image"
-              className="w-[300px] h-[300px] object-cover rounded-lg"
-            />
-          </div>
-
-          {/* Bouton précédent */}
-          <button
-            onClick={prevImage}
-            className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full focus:outline-none"
-            style={{ left: '-2em' }}
-          >
-            &#10094;
-          </button>
-
-          {/* Bouton suivant */}
-          <button
-            onClick={nextImage}
-            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full focus:outline-none"
-            style={{ right: '-2em' }}
-          >
-            &#10095;
-          </button>
-        </div>
+        <Carousel
+          // @ts-ignore
+          Carousel
+          className="rounded-xl"
+          navigation={({ setActiveIndex, activeIndex, length }) => (
+            <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+              {new Array(length).fill("").map((_, i) => (
+                <span
+                  key={i}
+                  className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+                    }`}
+                  onClick={() => setActiveIndex(i)}
+                />
+              ))}
+            </div>
+          )}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+            alt="image 1"
+            className="h-full w-full object-cover"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+            alt="image 2"
+            className="h-full w-full object-cover"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
+            alt="image 3"
+            className="h-full w-full object-cover"
+          />
+        </Carousel>
       </div>
     </div>
   );
