@@ -23,7 +23,7 @@ const Header = () => {
             </Link>
             <Link
               to="/recipes"
-              className="text-[#191715] text-[16px]vhover:text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-[#d5074c] font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+              className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-[#d5074c] font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
             >
               Nos recettes
             </Link>

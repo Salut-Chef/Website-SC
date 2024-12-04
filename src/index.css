@@ -5,3 +5,111 @@
 body {
   font-family: "haboro-soft", sans-serif;
 }
+
+.landingPage {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.landingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+.landingImage {
+  width: 100%;
+  height: 100%;
+}
+
+.landingImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+}
+
+.landingPage h1,
+.landingPage p,
+.landingPage .btn {
+  position: absolute;
+  z-index: 2;
+}
+
+.landingPage h1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fcf7f7;
+  text-shadow: 2px 2px 4px rgba(25, 23, 21, 1);
+  font-family: "prenton-ultra-condensed", sans-serif;
+  font-size: 6vw;
+  text-align: center;
+}
+
+.landingPage p {
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fcf7f7;
+  text-shadow: 2px 2px 4px rgba(25, 23, 21, 1);
+  font-style: italic;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.landingPage .btn {
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: #fcf7f7;
+  font-family: "prenton-ultra-condensed", sans-serif;
+  font-size: 1.2rem;
+  background-color: #d5074c;
+  padding: 0.4rem 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.5s ease, box-shadow 0.2s ease-in;
+  z-index: 2;
+}
+
+.landingPage .btn:hover {
+  box-shadow: inset 2px 2px 5px rgba(25, 23, 21, 1);
+}
+
+@media (max-width: 768px) {
+  .landingPage h1 {
+    font-size: 8vw;
+  }
+
+  .landingPage p {
+    font-size: 1rem;
+  }
+
+  .landingPage .btn {
+    font-size: 1rem;
+    padding: 0.3rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .landingPage h1 {
+    font-size: 10vw;
+  }
+
+  .landingPage p {
+    font-size: 0.9rem;
+  }
+
+  .landingPage .btn {
+    font-size: 0.9rem;
+    padding: 0.3rem 1rem;
+  }
+}
