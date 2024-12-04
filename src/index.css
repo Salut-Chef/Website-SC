@@ -44,44 +44,62 @@ body {
 }
 
 .landingPage h1 {
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fcf7f7;
   text-shadow: 2px 2px 4px rgba(25, 23, 21, 1);
   font-family: "prenton-ultra-condensed", sans-serif;
-  font-size: 6vw;
+  font-size: 10.5vw;
   text-align: center;
 }
 
 .landingPage p {
-  top: 70%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fcf7f7;
   text-shadow: 2px 2px 4px rgba(25, 23, 21, 1);
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
 }
 
 .landingPage .btn {
-  top: 85%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration: none;
   color: #fcf7f7;
   font-family: "prenton-ultra-condensed", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   background-color: #d5074c;
-  padding: 0.4rem 1.5rem;
+  padding: 0rem 1rem;
   border-radius: 8px;
-  transition: transform 0.5s ease, box-shadow 0.2s ease-in;
+  transition: transform 0.5s ease, box-shadow 0.3s ease-in;
   z-index: 2;
 }
 
 .landingPage .btn:hover {
   box-shadow: inset 2px 2px 5px rgba(25, 23, 21, 1);
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 45px solid white;
+  margin-left: -2%;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-right: 45px solid white;
+  margin-right: -2%;
 }
 
 @media (max-width: 768px) {

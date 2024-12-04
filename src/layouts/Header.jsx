@@ -5,8 +5,8 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header>
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 shadow-md">
+    <header className="sticky top-0 z-50">
+      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-1.5 shadow-md bg-[#fcf7f7]">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <img
             src="../../public/Salut_Chef.webp"
