@@ -6,6 +6,7 @@ body {
   font-family: "haboro-soft", sans-serif;
 }
 
+/* ===== Page d'Accueil ===== */
 .landingPage {
   width: 100%;
   height: 90vh;
@@ -84,25 +85,133 @@ body {
   box-shadow: inset 2px 2px 5px rgba(25, 23, 21, 1);
 }
 
-.arrow-right {
-  width: 0;
-  height: 0;
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-  border-left: 45px solid white;
-  margin-left: -2%;
+/* ----- Carousel ----- */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0.5em;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
 }
 
-.arrow-left {
-  width: 0;
-  height: 0;
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-  border-right: 45px solid white;
-  margin-right: -2%;
+.carousel-button.left {
+  left: -2em;
 }
 
-@media (max-width: 768px) {
+.carousel-button.right {
+  right: -2em;
+}
+
+.carousel-button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ----- Tips & Recipes ----- */
+.recipes,
+.tips,
+.landingPage h1,
+.landingPage p,
+.landingPage .btn {
+  transition: all 0.3s ease;
+}
+
+.recipes,
+.tips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7em;
+  margin-inline: 12em;
+  gap: 3em;
+}
+
+.recipesPres,
+.tipsPres {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.recipes img,
+.tips img {
+  border: 5px solid #fcf7f7;
+  border-radius: 10px;
+  box-shadow: 4px 4px 2px rgba(25, 23, 21, 0.5);
+  max-width: 100%;
+  height: auto;
+}
+
+.recipesPres h3,
+.tipsPres h3 {
+  color: #fcf7f7;
+  font-family: "prenton-ultra-condensed", sans-serif;
+  font-size: 4em;
+  margin-top: 1.5%;
+  text-decoration: underline;
+}
+
+.recipesPres p,
+.tipsPres p {
+  font-size: 25px;
+}
+
+/* ===== Media Queries ===== */
+@media screen and (max-width: 1280px) {
+  .recipes,
+  .tips {
+    margin-inline: 8em;
+  }
+
+  .recipesPres h3,
+  .tipsPres h3 {
+    font-size: 3.5em;
+  }
+
+  .recipesPres p,
+  .tipsPres p {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .recipes,
+  .tips {
+    flex-direction: column;
+    margin-inline: 5em;
+    margin-top: 4em;
+  }
+
+  .tips {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tips > * {
+    width: 100%;
+  }
+
+  .tips .tipsPres {
+    order: -1; /* Place le texte avant l'image */
+    margin-bottom: 2em; /* Ajoute un espace entre le texte et l'image */
+  }
+
+  .recipesPres h3,
+  .tipsPres h3 {
+    font-size: 3em;
+    margin-left: 0;
+  }
+
+  .recipesPres p,
+  .tipsPres p {
+    font-size: 20px;
+  }
+
   .landingPage h1 {
     font-size: 8vw;
   }
@@ -117,9 +226,47 @@ body {
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 768px) {
+  .recipes,
+  .tips {
+    margin-inline: 3em;
+    margin-top: 3em;
+  }
+
+  .recipesPres h3,
+  .tipsPres h3 {
+    font-size: 2.5em;
+  }
+
+  .recipesPres p,
+  .tipsPres p {
+    font-size: 18px;
+  }
+
   .landingPage h1 {
     font-size: 10vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .recipes,
+  .tips {
+    margin-inline: 2em;
+    margin-top: 2em;
+  }
+
+  .recipesPres h3,
+  .tipsPres h3 {
+    font-size: 2em;
+  }
+
+  .recipesPres p,
+  .tipsPres p {
+    font-size: 16px;
+  }
+
+  .landingPage h1 {
+    font-size: 12vw;
   }
 
   .landingPage p {
@@ -129,5 +276,22 @@ body {
   .landingPage .btn {
     font-size: 0.9rem;
     padding: 0.3rem 1rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .recipes,
+  .tips {
+    margin-inline: 1em;
+  }
+
+  .recipesPres h3,
+  .tipsPres h3 {
+    font-size: 1.8em;
+  }
+
+  .recipesPres p,
+  .tipsPres p {
+    font-size: 14px;
   }
 }
