@@ -1,30 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth"; 
+import { auth } from "../../firebaseConfig"; 
+import Header from "../layouts/Header"; 
 
 const Profile = () => {
-  const navigate = useNavigate();
-  const auth = getAuth();
-  const user = auth.currentUser;
+  const [user, setUser] = useState(null);  
+  const navigate = useNavigate(); 
 
-  // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+  useEffect(() => {
+   
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);  
+      } else {
+        navigate("/login");  
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigate]);
+
   if (!user) {
-    navigate("/login");
-    return null; // Empêche l'affichage avant la redirection
+    return null;  
   }
 
   return (
-    <div className="profile-container">
-      <h1>Bienvenue sur votre profil</h1>
-      <p>Email : {user.email}</p>
-      <button
-        onClick={() => {
-          auth.signOut();
-          navigate("/login");
-        }}
-      >
-        Se déconnecter
-      </button>
+    <div>
+      <Header />
+      <div className="profile-container">
+        <h1>Bienvenue sur votre profil</h1>
+        <p>Email : {user.email}</p>
+        <button
+          onClick={() => {
+            signOut(auth)
+              .then(() => {
+                  navigate("/"); 
+                    })
+                    .catch((error) => {
+                  console.error("Erreur de déconnexion :", error.message);
+                });
+
+          }}
+        >
+          Se déconnecter
+        </button>
+      </div>
     </div>
   );
 };
