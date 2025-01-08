@@ -5,7 +5,7 @@ import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons
 const Carousel = ({ category, searchTerm }) => {
   const items = {
     Apéro: [
-      { name: "Olives", image: "../../public/images/recipes/Olives.jpg", description: "Des olives fraîches et savoureuses." },
+      { name: "Olives", image: "../../public/Olives.jpg", description: "Des olives fraîches et savoureuses." },
       { name: "Chips maison", image: "/path/to/chips.jpg", description: "Des chips maison croustillantes." },
       { name: "Cocktail de crevettes", image: "/path/to/cocktail.jpg", description: "Un cocktail de crevettes délicieux." }
     ],
@@ -15,7 +15,7 @@ const Carousel = ({ category, searchTerm }) => {
       { name: "Foie gras poêlé", image: "/path/to/foie_gras.jpg", description: "Un foie gras poêlé accompagné d'une compote d'oignons." }
     ],
     Plat: [
-      { name: "Filet de bœuf", image: "../../public/images/recipes/filet-normand.jpg", description: "Un filet de bœuf tendre, cuit à la perfection." },
+      { name: "Filet de bœuf", image: "../../public/filet-normand.jpg", description: "Un filet de bœuf tendre, cuit à la perfection." },
       { name: "Saumon rôti", image: "/path/to/saumon.jpg", description: "Du saumon rôti avec une sauce au beurre blanc." },
       { name: "Poulet fermier rôti", image: "/path/to/poulet.jpg", description: "Un poulet fermier rôti, doré et savoureux." }
     ],
@@ -26,78 +26,82 @@ const Carousel = ({ category, searchTerm }) => {
     ]
   };
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // Filtrage selon le terme de recherche global
-  const filteredItems = items[category].filter((item) =>
+  const filteredItems = items[category]?.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  ) || [];
 
   const nextItem = () => {
-    if (currentIndex < filteredItems.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      setCurrentIndex(0);
-    }
+    setActiveIndex((prev) => (prev < filteredItems.length - 1 ? prev + 1 : 0));
   };
 
   const prevItem = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else {
-      setCurrentIndex(filteredItems.length - 1);
-    }
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : filteredItems.length - 1));
   };
 
   return (
-    <div className="carousel">
-      {/* Afficher un message si la recherche ne trouve aucun résultat */}
-      {filteredItems.length === 0 && (
-        <div className="no-results-message">
+    <div className="relative w-full max-w-2xl mx-auto overflow-hidden">
+      {filteredItems.length === 0 ? (
+        <div className="text-center p-4">
           <p>Aucune recette trouvée pour "{searchTerm}"</p>
         </div>
-      )}
-
-      <button
-        onClick={prevItem}
-        className="carousel-button carousel-button-left"
-        aria-label="Recette précédente"
-      >
-        <FontAwesomeIcon icon={faChevronLeft} />
-      </button>
-
-      <div className="carousel-item">
-        {filteredItems.length > 0 ? (
-          <div className="carousel-content">
-            <img
-              src={filteredItems[currentIndex].image}
-              alt={filteredItems[currentIndex].name}
-              className="carousel-image"
-            />
-            <h3>{filteredItems[currentIndex].name}</h3>
-            <p>{filteredItems[currentIndex].description}</p> {/* Affichage de la description */}
+      ) : (
+        <>
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          >
+            {filteredItems.map((item, index) => (
+              <div
+                key={index}
+                className={`w-full flex-shrink-0 relative ${
+                  index === activeIndex ? "scale-100 z-10" : "scale-90 opacity-50 z-0"
+                } transition-all duration-500`}
+              >
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-[350px] object-cover rounded-xl"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3 text-white rounded-b-lg">
+                  <h3 className="text-lg font-bold">{item.name}</h3>
+                  <p className="text-sm">{item.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ) : (
-          <h3>Aucune recette trouvée</h3>
-        )}
-      </div>
 
-      <button
-        onClick={nextItem}
-        className="carousel-button carousel-button-right"
-        aria-label="Recette suivante"
-      >
-        <FontAwesomeIcon icon={faChevronRight} />
-      </button>
+          <div className="absolute top-1/2 left-2 right-2 flex justify-between transform -translate-y-1/2">
+            <button
+              onClick={prevItem}
+              className="bg-[#fcf7f7] p-2 rounded-full"
+              aria-label="Recette précédente"
+            >
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            <button
+              onClick={nextItem}
+              className="bg-[#fcf7f7] p-2 rounded-full"
+              aria-label="Recette suivante"
+            >
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
+          </div>
 
-      <div className="carousel-indicator">
-        {filteredItems.map((_, index) => (
-          <span
-            key={index}
-            className={`dot ${index === currentIndex ? "active" : ""}`}
-          ></span>
-        ))}
-      </div>
+          <div className="flex justify-center mt-4">
+            {filteredItems.map((_, index) => (
+              <span
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`h-2 mx-1 rounded-full cursor-pointer ${
+                  index === activeIndex ? "bg-white w-8" : "bg-white/50 w-4"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

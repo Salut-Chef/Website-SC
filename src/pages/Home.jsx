@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import "../style/index.css";
 import Header from "../layouts/Header";
@@ -37,7 +38,7 @@ const Home = () => {
         <p>
           Ici, une mini-révolution culinaire est en marche... Dans le monde des
           étudiants ! <br />
-          Un objectif : t'améliorer en cuisine en découvrant de superbes
+          Un objectif : t&apos;améliorer en cuisine en découvrant de superbes
           recettes adaptées à ton budget !
         </p>
         <Link to="/about" className="btn">
