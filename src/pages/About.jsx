@@ -19,25 +19,26 @@ const About = () => {
     return (
         <div className="min-h-screen bg-white">
             <Header />
-            
+
             {/* Team Section Title */}
-            <div className="bg-[#E76F51] py-24 mb-32">
+            <div className="bgImgAbout"></div>
+            <div className="titleAbout">
                 <h2 className="text-5xl font-black italic text-center text-white">
                     L'équipe
                 </h2>
             </div>
 
             {/* Red Line Separator */}
-            <div className="w-0.5 h-32 bg-[#E76F51] mx-auto -mt-16 mb-16"/>
+            <div className="mt-10 w-0.5 h-32 bg-[#E76F51] mx-auto -mt-16 mb-16" />
 
             {/* Team Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-24 gap-y-16 px-8 max-w-7xl mx-auto">
                 {teamMembers.map((member, index) => (
                     <div key={index} className="flex flex-col items-center text-center">
                         <div className="w-48 h-48 bg-gray-200 rounded-full mb-6">
-                            <img 
-                                src={member.photo} 
-                                alt={member.name} 
+                            <img
+                                src={member.photo}
+                                alt={member.name}
                                 className="w-full h-full rounded-full object-cover"
                             />
                         </div>
@@ -51,9 +52,11 @@ const About = () => {
                 ))}
             </div>
 
+            <div className="mt-10 w-0.5 h-32 bg-[#E76F51] mx-auto mb-10" />
+
             {/* Video Section */}
-            <div className="my-32 px-8">
-                <h2 className="text-4xl font-black italic text-center mb-16">
+            <div className="mt-0 my-32 px-8">
+                <h2 className="text-xl font-black italic text-center mb-16">
                     Maintenant que vous connaissez l'équipe, découvrons pourquoi Salut Chef est le choix parfait pour les étudiants !
                 </h2>
                 <div className="w-full max-w-4xl mx-auto bg-gray-200 aspect-video flex items-center justify-center">
@@ -64,23 +67,23 @@ const About = () => {
             {/* Food Images Section */}
             <div className="max-w-6xl mx-auto px-8 mb-32">
                 <div className="flex flex-col md:flex-row items-center justify-between mb-24">
-                    <img 
-                        src="food1.jpg" 
-                        alt="Plat gastronomique" 
+                    <img
+                        src="food1.jpg"
+                        alt="Plat gastronomique"
                         className="w-96 h-64 object-cover rounded-lg shadow-lg mb-8 md:mb-0"
                     />
                     <p className="md:ml-16 text-lg italic max-w-xl text-center md:text-left">
-                    Salut Chef ! a émergé des idées d’Hénan lors d’un brainstorming en octobre 2023, en études supérieures, consistant a créé un projet entrepreneurial. Lors du pitch de base, ce projet a attiré l’attention de Svetlana, qui a décidé de prendre part à Salut Chef !. C’est ainsi qu’une révolution culinaire s’est mise en marche : de l’envie de Svetlana et Hénan d’aider les étudiants à mieux manger, à comprendre comment mieux manger, et à changer leurs habitudes alimentaires.
+                        Salut Chef ! a émergé des idées d’Hénan lors d’un brainstorming en octobre 2023, en études supérieures, consistant a créé un projet entrepreneurial. Lors du pitch de base, ce projet a attiré l’attention de Svetlana, qui a décidé de prendre part à Salut Chef !. C’est ainsi qu’une révolution culinaire s’est mise en marche : de l’envie de Svetlana et Hénan d’aider les étudiants à mieux manger, à comprendre comment mieux manger, et à changer leurs habitudes alimentaires.
                     </p>
                 </div>
 
                 <div className="flex flex-col-reverse md:flex-row items-center justify-between">
                     <p className="md:mr-16 text-lg italic max-w-xl text-center md:text-left mt-8 md:mt-0">
-                    Aujourd’hui, Salut Chef ! est en pleine expansion. Après 1 année complète passée sur la conceptualisation du projet, c’est désormais comme association que se définit Salut Chef !. Une association à destination de tous les étudiants désireux d’apprendre à cuisiner, une association pour les étudiants, par les étudiants.
+                        Aujourd’hui, Salut Chef ! est en pleine expansion. Après 1 année complète passée sur la conceptualisation du projet, c’est désormais comme association que se définit Salut Chef !. Une association à destination de tous les étudiants désireux d’apprendre à cuisiner, une association pour les étudiants, par les étudiants.
                     </p>
-                    <img 
-                        src="food2.jpg" 
-                        alt="Plat gastronomique" 
+                    <img
+                        src="food2.jpg"
+                        alt="Plat gastronomique"
                         className="w-96 h-64 object-cover rounded-lg shadow-lg"
                     />
                 </div>
