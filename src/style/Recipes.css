@@ -1,0 +1,197 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style général de la page */
+.recipes-page {
+  font-family: "Playfair Display", serif;
+  background-color: #fefaf5;
+  color: #3e2723;
+  padding: 30px;
+}
+
+/* Restaurant header */
+.restaurant-name {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #b71c1c;
+}
+
+.restaurant-subtitle {
+  font-size: 1.2rem;
+  color: #6d4c41;
+  margin-bottom: 20px;
+}
+
+/* Recherche */
+.search-container {
+  text-align: center;
+  margin-bottom: 20px; /* Espace sous la barre de recherche */
+}
+
+.search-bar {
+  width: 60%;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  color: #3e2723;
+  background-color: #fefaf5;
+  transition: border-color 0.3s;
+}
+
+.search-bar:focus {
+  border-color: #b71c1c;
+  outline: none;
+}
+
+/* Menu container */
+.menu-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.menu-category {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.menu-title {
+  font-size: 1.8rem;
+  color: #b71c1c;
+  margin-bottom: 10px;
+}
+
+.carousel-item h3 {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #3e2723;
+}
+
+/* Divider (separating categories) */
+.menu-divider {
+  border: none;
+  border-top: 2px dashed #d7ccc8; 
+  margin: 20px 0;
+}
+
+/* Carousel */
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+/* Conteneur de l'élément du carousel */
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative; 
+  width: 100%;
+}
+
+.carousel-image {
+  max-width: 80%;  
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+/* Boutons de navigation */
+.carousel-button {
+  background-color: #b71c1c; 
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.3s, background-color 0.3s;
+  position: absolute;
+  z-index: 10;
+}
+
+/* Effet au survol des boutons */
+.carousel-button:hover {
+  transform: scale(1.1);
+  background-color: #8d1b1b; 
+}
+
+/* Bouton à gauche (au-dessus de l'image) */
+.carousel-button-left {
+  left: 10px;
+  top: 50%;  
+  transform: translateY(-50%);  
+}
+
+/* Bouton à droite (en dessous de l'image) */
+.carousel-button-right {
+  right: 10px; 
+  top: 50%;  
+  transform: translateY(-50%); 
+}
+
+/* Indicateurs */
+.carousel-indicator {
+  margin-top: 15px;
+}
+
+.carousel-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.carousel-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.carousel-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.carousel-item p {
+  font-size: 1rem;
+  color: #6d4c41; /* Une couleur de texte douce */
+  margin-top: 10px;
+}
+
+.dot.active {
+  background-color: #b71c1c;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .restaurant-name {
+    font-size: 2.5rem;
+  }
+
+  .menu-container {
+    padding: 15px;
+  }
+
+  .carousel-image {
+    max-width: 100%;  /* Permet aux images d'occuper tout l'espace disponible sur mobile */
+  }
+
+  .search-bar {
+    width: 100%;  /* Étend la barre de recherche sur toute la largeur sur mobile */
+  }
+}
