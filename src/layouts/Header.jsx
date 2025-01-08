@@ -34,12 +34,6 @@ const Header = () => {
               Tips et Astuces
             </Link>
             <Link
-              to="/workshops"
-              className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-[#d5074c] font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
-            >
-              Nos ateliers culinaires
-            </Link>
-            <Link
               to="/contact"
               className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-[#d5074c] font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
             >
