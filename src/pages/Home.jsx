@@ -10,17 +10,17 @@ const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const recettes = [
     {
-      image: "./canard.jpg",
+      image: "../../public/images/home/canard.jpg",
       titre: "Recette 1",
       description: "Découvrez notre première délicieuse recette"
     },
     {
-      image: "./orange.jpg",
+      image: "../../public/images/home/orange.jpg",
       titre: "Recette 2",
       description: "Une recette simple et savoureuse"
     },
     {
-      image: "./bavette.jpg",
+      image: "../../public/images/home/bavette.jpg",
       titre: "Recette 3",
       description: "La recette qui va transformer votre cuisine"
     }
@@ -32,7 +32,7 @@ const Home = () => {
       <div className="landingPage">
         <div className="landingOverlay"></div>
         <div className="landingImage">
-          <img src="../../public/home_fire.JPG" alt="Test" />
+          <img src="../../public/images/home/home_fire.JPG" alt="Test" />
         </div>
         <h1>Salut Chef !</h1>
         <p>
@@ -124,11 +124,11 @@ const Home = () => {
               </i>
             </p>
           </div>
-          <img src="../../public/canard.jpg" alt="Magret de canard" />
+          <img src="../../public/images/home/canard.jpg" alt="Magret de canard" />
         </div>
 
         <div className="tips">
-          <img src="../../public/bavette.jpg" alt="Bavette de boeuf" />
+          <img src="../../public/images/home/bavette.jpg" alt="Bavette de boeuf" />
           <div className="tipsPres">
             <h3><i>Tips et Astuces</i></h3>
             <br />

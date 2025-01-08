@@ -9,7 +9,7 @@ const Header = () => {
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-1.5 shadow-md bg-[#fcf7f7]">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <img
-            src="../../public/Salut_Chef.webp"
+            src="../../public/images/Salut_Chef.png"
             alt="Logo Salut Chef"
             className="mr-3 h-10 sm:h-10"
           />
@@ -54,7 +54,7 @@ const Header = () => {
               className="text-gray-800 hover:bg-[#d5074c] focus:ring-4 focus:ring-gray-300 font-medium rounded-full h-12 w-12 flex items-center justify-center transition duration-500 ease-in-out"
             >
               <img
-                src="../../public/search.png"
+                src="../../public/images/header/search.png"
                 alt="Rechercher"
                 className="h-8 w-8"
               />
@@ -64,7 +64,7 @@ const Header = () => {
               className="text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-red-300 font-medium rounded-full h-12 w-12 flex items-center justify-center ml-3 transition duration-500 ease-in-out"
             >
               <img
-                src="../../public/home.png"
+                src="../../public/images/header/home.png"
                 alt="Accueil"
                 className="h-8 w-8"
               />
