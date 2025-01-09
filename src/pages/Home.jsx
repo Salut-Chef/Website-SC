@@ -29,19 +29,19 @@ const Home = () => {
     <div>
       <Header />
 
-      <div className="landingPage">
-        <div className="landingOverlay"></div>
-        <div className="landingImage">
-          <img src="../../images/home/home_fire.JPG" alt="Test" />
+      <div className="w-full h-[90vh] relative overflow-hidden">
+        <div className="inset-0 w-full h-full absolute backdrop-blur-[10px] z-10"></div>
+        <div className="w-full h-full">
+          <img src="../../images/home/home_fire.JPG" alt="Test" className="w-full h-full object-cover object-left-center block" />
         </div>
-        <h1 className="text-customWhite">Salut Chef !</h1>
-        <p className="text-customWhite">
+        <h1 className="text-customWhite absolute z-20">Salut Chef !</h1>
+        <p className="text-customWhite absolute z-20">
           Ici, une mini-révolution culinaire est en marche... Dans le monde des
           étudiants ! <br />
           Un objectif : t&apos;améliorer en cuisine en découvrant de superbes
           recettes adaptées à ton budget !
         </p>
-        <Link to="/about" className="btn text-customWhite">
+        <Link to="/about" className="btn text-customWhite absolute z-20">
           En savoir +
         </Link>
       </div>
