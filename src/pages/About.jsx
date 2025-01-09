@@ -17,13 +17,13 @@ const About = () => {
     ];
 
     return (
-        <div className="aboutPage">
+        <div className="aboutPage bg-customWhite">
             <Header />
 
             {/* Team Section Title */}
             <div className="bgImgAbout"></div>
             <div className="titleAbout">
-                <h2 className="text-5xl text-center text-white">
+                <h2 className="text-5xl text-center text-customWhite">
                     L'équipe
                 </h2>
             </div>

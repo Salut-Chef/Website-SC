@@ -7,8 +7,19 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        titleFont: ["prenton-ultra-condensed", "sans-serif"],
+        bodyFont: ["haboro-soft", "sans-serif"],
+      },
       colors: {
-        customRed: "#D5074C",
+        framboise: "#D5074C",
+        customWhite: "#FCF7F7",
+        customBlack: "#191715",
+        citron: "#FED766",
+        mandarine: "#ED583F",
+      },
+      boxShadow: {
+        shadowCustom: "4px 4px 2px rgba(25, 23, 21, 0.5)",
       },
     },
   },

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Carousel from "../components/Carousel";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
-import "../style/Recipes.css";
 
 export default function Recipes() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -10,44 +9,49 @@ export default function Recipes() {
   return (
     <div>
       <Header />
-      <div className="recipes-page">
+      <div className="p-[2em] bg-customWhite">
 
         {/* Menu container */}
-        <div className="menu-container">
+        <div className="max-w-[800px] mx-auto p-[2em] bg-customWhite border rounded-[15px] shadow-shadowCustom">
           <div className="menu-header">
-            <h1 className="restaurant-name">Carte Gastronomique</h1>
-            <p className="restaurant-subtitle">Découvrez nos délices raffinés</p>
+            <h1 className="text-center font-titleFont text-4xl">Nos Recettes</h1>
           </div>
 
           {/* Barre de recherche globale pour toutes les catégories */}
-          <div className="search-container">
+          <div className="text-center my-[1em]">
             <input
               type="text"
               placeholder="Rechercher une recette..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-bar"
+              className="w-[35em] p-[0.5em] border border-framboise rounded-[15px] shadow-shadow focus:outline-none focus:ring-2 focus:ring-framboise focus:border-transparent"
             />
           </div>
 
           {/* Sections */}
-          <div className="menu-category">
-            <h2 className="menu-title">Apéritifs</h2>
+          <div className="text-center py-[1em]">
+            <h2 className="font-titleFont font text-3xl">Apéritifs</h2>
             <Carousel category="Apéro" searchTerm={searchTerm} />
           </div>
-          <hr className="menu-divider" />
-          <div className="menu-category">
-            <h2 className="menu-title">Entrées</h2>
+
+          <hr className="border-t-2 border-framboise my-4 mx-auto w-2/3 rounded-full shadow-md" />
+
+          <div className="text-center py-[1em]">
+            <h2 className="font-titleFont font text-3xl">Entrées</h2>
             <Carousel category="Entrée" searchTerm={searchTerm} />
           </div>
-          <hr className="menu-divider" />
-          <div className="menu-category">
-            <h2 className="menu-title">Plats principaux</h2>
+
+          <hr className="border-t-2 border-framboise my-4 mx-auto w-2/3 rounded-full shadow-md" />
+
+          <div className="text-center py-[1em]">
+            <h2 className="font-titleFont font text-3xl">Plats principaux</h2>
             <Carousel category="Plat" searchTerm={searchTerm} />
           </div>
-          <hr className="menu-divider" />
-          <div className="menu-category">
-            <h2 className="menu-title">Desserts</h2>
+
+          <hr className="border-t-2 border-framboise my-4 mx-auto w-2/3 rounded-full shadow-md" />
+
+          <div className="text-center py-[1em]">
+            <h2 className="font-titleFont font text-3xl">Desserts</h2>
             <Carousel category="Dessert" searchTerm={searchTerm} />
           </div>
         </div>
