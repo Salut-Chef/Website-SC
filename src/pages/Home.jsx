@@ -46,7 +46,7 @@ const Home = () => {
         </Link>
       </div>
 
-      <div className="homeContainer bg-[#d5074c] pt-[1em]">
+      <div className="homeContainer bg-[#d5074c] pt-[1em] pb-[3em]">
         <h2 className="text-[4em] font-[prenton-ultra-condensed] text-[#fcf7f7] ml-[0.6em]">
           Nos dernières recettes
         </h2>
@@ -143,7 +143,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   );
