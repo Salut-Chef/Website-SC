@@ -6,7 +6,11 @@ module.exports = {
     "path/to/node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        customRed: "#D5074C",
+      },
+    },
   },
   plugins: [],
 };

@@ -39,9 +39,9 @@ const Auth = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="container mx-auto mt-10 px-4">
+      <div className="flex-grow container mx-auto mt-10 px-4">
         <div className="flex justify-center">
           <div className="w-full max-w-md">
             <div className="bg-white shadow-lg rounded-lg p-6">
@@ -50,7 +50,7 @@ const Auth = () => {
                   <li className="mr-4">
                     <button
                       className={`px-4 py-2 text-sm font-medium ${activeTab === "login"
-                        ? "text-blue-500 border-b-2 border-blue-500"
+                        ? "text-customRed border-b-2 border-customRed"
                         : "text-gray-500"
                         }`}
                       onClick={() => setActiveTab("login")}
@@ -61,7 +61,7 @@ const Auth = () => {
                   <li>
                     <button
                       className={`px-4 py-2 text-sm font-medium ${activeTab === "register"
-                        ? "text-blue-500 border-b-2 border-blue-500"
+                        ? "text-customRed border-b-2 border-customRed"
                         : "text-gray-500"
                         }`}
                       onClick={() => setActiveTab("register")}
@@ -73,7 +73,6 @@ const Auth = () => {
               </div>
 
               <div>
-                {/* Login Tab */}
                 {activeTab === "login" && (
                   <form onSubmit={handleSignIn}>
                     {error && (
@@ -104,15 +103,13 @@ const Auth = () => {
                     <div className="flex justify-center">
                       <button
                         type="submit"
-                        className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        className="px-6 py-2 bg-customRed text-white rounded-lg hover:transform hover:shadow-[inset_2px_2px_5px_rgba(25,23,21,1)] transition-transform transition-shadow duration-[500ms] ease-in-out"
                       >
                         Log in
                       </button>
                     </div>
                   </form>
                 )}
-
-                {/* Register Tab */}
                 {activeTab === "register" && (
                   <form onSubmit={handleRegister}>
                     {error && (
@@ -153,7 +150,7 @@ const Auth = () => {
                     <div className="flex justify-center">
                       <button
                         type="submit"
-                        className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        className="px-6 py-2 bg-customRed text-white rounded-lg hover:transform hover:shadow-[inset_2px_2px_5px_rgba(25,23,21,1)] transition-transform transition-shadow duration-[500ms] ease-in-out"
                       >
                         Sign up
                       </button>
