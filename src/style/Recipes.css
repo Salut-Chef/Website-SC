@@ -1,0 +1,224 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style général de la page */
+.recipes-page {
+  font-family: "Playfair Display", serif;
+  background-color: #fefaf5;
+  color: #3e2723;
+  padding: 30px;
+}
+
+/* Restaurant header */
+.restaurant-name {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #b71c1c;
+}
+
+.restaurant-subtitle {
+  font-size: 1.2rem;
+  color: #6d4c41;
+  margin-bottom: 20px;
+}
+
+/* Recherche */
+.search-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 60%;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  color: #3e2723;
+  background-color: #fefaf5;
+  transition: border-color 0.3s;
+}
+
+.search-bar:focus {
+  border-color: #b71c1c;
+  outline: none;
+}
+
+/* Menu container */
+.menu-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.menu-category {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.menu-title {
+  font-size: 1.8rem;
+  color: #b71c1c;
+  margin-bottom: 10px;
+}
+
+.carousel-item h3 {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #3e2723;
+}
+
+/* Divider (separating categories) */
+.menu-divider {
+  border: none;
+  border-top: 2px dashed #d7ccc8; 
+  margin: 20px 0;
+}
+
+/* Carousel container */
+.carousel {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Carousel track (conteneur des items) */
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Carousel items */
+.carousel-item {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 15px;
+  border-radius: 0 0 15px 15px;
+  text-align: center;
+}
+
+.carousel-content h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.carousel-content p {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+/* Navigation buttons */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #b71c1c;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.carousel-button:hover {
+  background-color: #8d1b1b;
+  transform: scale(1.1);
+}
+
+.carousel-button-left {
+  left: 10px;
+}
+
+.carousel-button-right {
+  right: 10px;
+}
+
+/* Indicators (dots) */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.carousel-indicators span {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background: #d7ccc8;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, width 0.3s;
+}
+
+.carousel-indicators span.active {
+  background: #b71c1c;
+  width: 15px;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .carousel-image {
+    height: 250px;
+  }
+
+  .carousel-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .carousel-content p {
+    font-size: 0.9rem;
+  }
+
+  .carousel-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .carousel-indicators span {
+    width: 8px;
+    height: 8px;
+  }
+
+  .carousel-indicators span.active {
+    width: 12px;
+  }
+}
