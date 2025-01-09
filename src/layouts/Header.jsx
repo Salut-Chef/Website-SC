@@ -35,7 +35,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50">
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-1.5 shadow-md bg-[#fcf7f7]">
+      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-1.5 shadow-md bg-customWhite">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <img
             src="/images/Salut_Chef.png"
@@ -46,25 +46,25 @@ const Header = () => {
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
             <Link
               to="/about"
-              className="text-[#191715] text-[16px] hover:text-white hover:bg-customRed focus:ring-4 focus:ring-customRed font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+              className="text-[#191715] text-[16px] hover:text-white hover:bg-framboise focus:ring-4 focus:ring-framboise font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
             >
               À propos
             </Link>
             <Link
               to="/recipes"
-              className="text-[#191715] text-[16px] hover:text-white hover:bg-customRed focus:ring-4 focus:ring-customRed font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+              className="text-[#191715] text-[16px] hover:text-white hover:bg-framboise focus:ring-4 focus:ring-framboise font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
             >
               Nos recettes
             </Link>
             <Link
               to="#"
-              className="text-[#191715] text-[16px] hover:text-white hover:bg-customRed focus:ring-4 focus:ring-customRed font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+              className="text-[#191715] text-[16px] hover:text-white hover:bg-framboise focus:ring-4 focus:ring-framboise font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
             >
               Tips et Astuces
             </Link>
             <Link
               to="/contact"
-              className="text-[#191715] text-[16px] hover:text-white hover:bg-customRed focus:ring-4 focus:ring-customRed font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+              className="text-[#191715] text-[16px] hover:text-white hover:bg-framboise focus:ring-4 focus:ring-framboise font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
             >
               Contact
             </Link>
@@ -75,7 +75,7 @@ const Header = () => {
             {user ? (
               <Link
                 to="/profile"
-                className="text-[#191715] text-[16px] mr-2 hover:text-white hover:bg-customRed focus:ring-4 focus:ring-customRed font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+                className="text-[#191715] text-[16px] mr-2 hover:text-white hover:bg-framboise focus:ring-4 focus:ring-framboise font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
               >
                 <img
                   src="/images/header/user.png"
@@ -86,7 +86,7 @@ const Header = () => {
             ) : (
               <Link
                 to="/loginsignup"
-                className="text-[#191715] text-[16px] mr-2 hover:text-white hover:bg-customRed focus:ring-4 focus:ring-customRed font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+                className="text-[#191715] text-[16px] mr-2 hover:text-white hover:bg-framboise focus:ring-4 focus:ring-framboise font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
               >
                 <img
                   src="/images/header/login.png"
@@ -98,7 +98,7 @@ const Header = () => {
 
             <Link
               to="/"
-              className="text-[#191715] text-[16px] hover:text-white hover:bg-customRed focus:ring-4 focus:ring-customRed font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+              className="text-[#191715] text-[16px] hover:text-white hover:bg-framboise focus:ring-4 focus:ring-framboise font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
             >
               <img src="../../images/header/home.png" alt="Accueil" className="h-8 w-8" />
             </Link>
@@ -121,16 +121,16 @@ const Header = () => {
           <div className="lg:hidden">
             <ul className="flex flex-col mt-4 space-y-4">
               <li>
-                <Link to="/about" className="block py-2 px-4 text-[#191715] hover:bg-customRed">À propos</Link>
+                <Link to="/about" className="block py-2 px-4 text-[#191715] hover:bg-framboise">À propos</Link>
               </li>
               <li>
-                <Link to="/recipes" className="block py-2 px-4 text-[#191715] hover:bg-customRed">Nos recettes</Link>
+                <Link to="/recipes" className="block py-2 px-4 text-[#191715] hover:bg-framboise">Nos recettes</Link>
               </li>
               <li>
-                <Link to="/profile" className="block py-2 px-4 text-[#191715] hover:bg-customRed">Profil</Link>
+                <Link to="/profile" className="block py-2 px-4 text-[#191715] hover:bg-framboise">Profil</Link>
               </li>
               <li>
-                <Link to="/loginsignup" className="block py-2 px-4 text-[#191715] hover:bg-customRed">Se connecter / S'inscrire</Link>
+                <Link to="/loginsignup" className="block py-2 px-4 text-[#191715] hover:bg-framboise">Se connecter / S'inscrire</Link>
               </li>
             </ul>
           </div>

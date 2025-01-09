@@ -50,7 +50,7 @@ const Auth = () => {
                   <li className="mr-4">
                     <button
                       className={`px-4 py-2 text-sm font-medium ${activeTab === "login"
-                        ? "text-customRed border-b-2 border-customRed"
+                        ? "text-framboise border-b-2 border-framboise"
                         : "text-gray-500"
                         }`}
                       onClick={() => setActiveTab("login")}
@@ -61,7 +61,7 @@ const Auth = () => {
                   <li>
                     <button
                       className={`px-4 py-2 text-sm font-medium ${activeTab === "register"
-                        ? "text-customRed border-b-2 border-customRed"
+                        ? "text-framboise border-b-2 border-framboise"
                         : "text-gray-500"
                         }`}
                       onClick={() => setActiveTab("register")}
@@ -103,7 +103,7 @@ const Auth = () => {
                     <div className="flex justify-center">
                       <button
                         type="submit"
-                        className="px-6 py-2 bg-customRed text-white rounded-lg hover:transform hover:shadow-[inset_2px_2px_5px_rgba(25,23,21,1)] transition-transform transition-shadow duration-[500ms] ease-in-out"
+                        className="px-6 py-2 bg-framboise text-white rounded-lg hover:transform hover:shadow-[inset_2px_2px_5px_rgba(25,23,21,1)] transition-transform transition-shadow duration-[500ms] ease-in-out"
                       >
                         Log in
                       </button>
@@ -150,7 +150,7 @@ const Auth = () => {
                     <div className="flex justify-center">
                       <button
                         type="submit"
-                        className="px-6 py-2 bg-customRed text-white rounded-lg hover:transform hover:shadow-[inset_2px_2px_5px_rgba(25,23,21,1)] transition-transform transition-shadow duration-[500ms] ease-in-out"
+                        className="px-6 py-2 bg-framboise text-white rounded-lg hover:transform hover:shadow-[inset_2px_2px_5px_rgba(25,23,21,1)] transition-transform transition-shadow duration-[500ms] ease-in-out"
                       >
                         Sign up
                       </button>

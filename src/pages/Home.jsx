@@ -34,20 +34,20 @@ const Home = () => {
         <div className="landingImage">
           <img src="../../images/home/home_fire.JPG" alt="Test" />
         </div>
-        <h1>Salut Chef !</h1>
-        <p>
+        <h1 className="text-customWhite">Salut Chef !</h1>
+        <p className="text-customWhite">
           Ici, une mini-révolution culinaire est en marche... Dans le monde des
           étudiants ! <br />
           Un objectif : t&apos;améliorer en cuisine en découvrant de superbes
           recettes adaptées à ton budget !
         </p>
-        <Link to="/about" className="btn">
+        <Link to="/about" className="btn text-customWhite">
           En savoir +
         </Link>
       </div>
 
-      <div className="homeContainer bg-customRed pt-[1em] pb-[2em]">
-        <h2 className="text-left text-[4em] font-[prenton-ultra-condensed] text-[#fcf7f7] ml-[0.6em]">
+      <div className="homeContainer bg-framboise pt-[1em] pb-[2em]">
+        <h2 className="text-left text-[4em] font-[prenton-ultra-condensed] text-customWhite ml-[0.6em]">
           Nos dernières recettes
         </h2>
 
@@ -86,13 +86,13 @@ const Home = () => {
           <div className="absolute top-1/2 left-2 right-2 flex justify-between transform -translate-y-1/2">
             <button
               onClick={() => setActiveIndex((prev) => (prev > 0 ? prev - 1 : recettes.length - 1))}
-              className="bg-customRed hover:bg-customRed hover:scale-125 p-2 rounded-full duration-300"
+              className="bg-framboise hover:bg-framboise hover:scale-125 p-2 rounded-full duration-300"
             >
               &#10094;
             </button>
             <button
               onClick={() => setActiveIndex((prev) => (prev < recettes.length - 1 ? prev + 1 : 0))}
-              className="bg-customRed hover:bg-customRed hover:scale-125 p-2 rounded-full duration-300"
+              className="bg-framboise hover:bg-framboise hover:scale-125 p-2 rounded-full duration-300"
             >
               &#10095;
             </button>
