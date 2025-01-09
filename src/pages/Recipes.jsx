@@ -9,13 +9,12 @@ export default function Recipes() {
   return (
     <div>
       <Header />
-      <div className="p-[2em]">
+      <div className="p-[2em] bg-customWhite">
 
         {/* Menu container */}
         <div className="max-w-[800px] mx-auto p-[2em] bg-customWhite border rounded-[15px] shadow-shadowCustom">
           <div className="menu-header">
-            <h1>Carte Gastronomique</h1>
-            <p>Découvrez nos délices raffinés</p>
+            <h1 className="text-center font-titleFont text-4xl">Nos Recettes</h1>
           </div>
 
           {/* Barre de recherche globale pour toutes les catégories */}
@@ -25,7 +24,7 @@ export default function Recipes() {
               placeholder="Rechercher une recette..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-auto p-[0.5em] border border-framboise rounded-[15px] shadow-shadow focus:outline-none focus:ring-2 focus:ring-framboise focus:border-transparent"
+              className="w-[35em] p-[0.5em] border border-framboise rounded-[15px] shadow-shadow focus:outline-none focus:ring-2 focus:ring-framboise focus:border-transparent"
             />
           </div>
 
@@ -38,7 +37,7 @@ export default function Recipes() {
           <hr className="border-t-2 border-framboise my-4 mx-auto w-2/3 rounded-full shadow-md" />
 
           <div className="text-center py-[1em]">
-            <h2 className="menu-title">Entrées</h2>
+            <h2 className="font-titleFont font text-3xl">Entrées</h2>
             <Carousel category="Entrée" searchTerm={searchTerm} />
           </div>
 

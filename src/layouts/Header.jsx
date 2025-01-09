@@ -34,8 +34,8 @@ const Header = () => {
   }
 
   return (
-    <header className="sticky top-0 z-50">
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-1.5 shadow-md bg-customWhite">
+    <header className="sticky top-0 z-50 ">
+      <nav className="bg-customWhite border-gray-200 px-4 lg:px-6 py-1.5 shadow-md bg-customWhite">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <img
             src="/images/Salut_Chef.png"
