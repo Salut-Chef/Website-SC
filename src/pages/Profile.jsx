@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../config/firebase.js";
+import { auth } from "../config/firebase";
 import Header from "../layouts/Header";
 
 const Profile = () => {
