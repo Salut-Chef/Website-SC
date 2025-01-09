@@ -5,7 +5,7 @@ import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons
 const Carousel = ({ category, searchTerm }) => {
   const items = {
     Apéro: [
-      { name: "Olives", image: "../../public/images/recipes/Olives.jpg", description: "Des olives fraîches et savoureuses." },
+      { name: "Olives", image: "../../images/recipes/Olives.jpg", description: "Des olives fraîches et savoureuses." },
       { name: "Chips maison", image: "", description: "Des chips maison croustillantes." },
       { name: "Cocktail de crevettes", image: "", description: "Un cocktail de crevettes délicieux." }
     ],
@@ -15,7 +15,7 @@ const Carousel = ({ category, searchTerm }) => {
       { name: "Foie gras poêlé", image: "", description: "Un foie gras poêlé accompagné d'une compote d'oignons." }
     ],
     Plat: [
-      { name: "Filet de bœuf", image: "../../public/images/recipes/filet-normand.jpg", description: "Un filet de bœuf tendre, cuit à la perfection." },
+      { name: "Filet de bœuf", image: "../../images/recipes/filet-normand.jpg", description: "Un filet de bœuf tendre, cuit à la perfection." },
       { name: "Saumon rôti", image: "", description: "Du saumon rôti avec une sauce au beurre blanc." },
       { name: "Poulet fermier rôti", image: "", description: "Un poulet fermier rôti, doré et savoureux." }
     ],
@@ -71,23 +71,23 @@ const Carousel = ({ category, searchTerm }) => {
             ))}
           </div>
 
+          {/* Boutons pour naviguer */}
           <div className="absolute top-1/2 left-2 right-2 flex justify-between transform -translate-y-1/2">
             <button
               onClick={prevItem}
-              className="bg-[#fcf7f7] p-2 rounded-full"
-              aria-label="Recette précédente"
+              className="bg-[#D5074C] hover:bg-[#FED766] p-2 rounded-full transition-colors duration-300"
             >
-              <FontAwesomeIcon icon={faChevronLeft} />
+              &#10094;
             </button>
             <button
               onClick={nextItem}
-              className="bg-[#fcf7f7] p-2 rounded-full"
-              aria-label="Recette suivante"
+              className="bg-[#D5074C] hover:bg-[#FED766] p-2 rounded-full transition-colors duration-300"
             >
-              <FontAwesomeIcon icon={faChevronRight} />
+              &#10095;
             </button>
           </div>
 
+          {/* Indicateurs */}
           <div className="flex justify-center mt-4">
             {filteredItems.map((_, index) => (
               <span

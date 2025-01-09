@@ -27,7 +27,7 @@ const Footer = () => {
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <span className="block text-sm sm:text-center">© 2023 Salut Chef ! Tous droits réservés.</span>
       </div>
-    </footer >
+    </footer>
   );
 }
 

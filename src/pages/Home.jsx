@@ -10,17 +10,17 @@ const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const recettes = [
     {
-      image: "../../public/images/home/canard.jpg",
+      image: "../../images/home/canard.jpg",
       titre: "Recette 1",
       description: "Découvrez notre première délicieuse recette"
     },
     {
-      image: "../../public/images/home/orange.jpg",
+      image: "../../images/home/orange.jpg",
       titre: "Recette 2",
       description: "Une recette simple et savoureuse"
     },
     {
-      image: "../../public/images/home/bavette.jpg",
+      image: "../../images/home/bavette.jpg",
       titre: "Recette 3",
       description: "La recette qui va transformer votre cuisine"
     }
@@ -32,7 +32,7 @@ const Home = () => {
       <div className="landingPage">
         <div className="landingOverlay"></div>
         <div className="landingImage">
-          <img src="../../public/images/home/home_fire.JPG" alt="Test" />
+          <img src="../../images/home/home_fire.JPG" alt="Test" />
         </div>
         <h1>Salut Chef !</h1>
         <p>
@@ -46,8 +46,8 @@ const Home = () => {
         </Link>
       </div>
 
-      <div className="homeContainer bg-[#d5074c] pt-[1em] pb-[3em]">
-        <h2 className="text-[4em] font-[prenton-ultra-condensed] text-[#fcf7f7] ml-[0.6em]">
+      <div className="homeContainer bg-customRed pt-[1em] pb-[2em]">
+        <h2 className="text-left text-[4em] font-[prenton-ultra-condensed] text-[#fcf7f7] ml-[0.6em]">
           Nos dernières recettes
         </h2>
 
@@ -86,17 +86,18 @@ const Home = () => {
           <div className="absolute top-1/2 left-2 right-2 flex justify-between transform -translate-y-1/2">
             <button
               onClick={() => setActiveIndex((prev) => (prev > 0 ? prev - 1 : recettes.length - 1))}
-              className="bg-[#fcf7f7] p-2 rounded-full"
+              className="bg-[#D5074C] hover:bg-[#FED766] p-2 rounded-full transition-colors duration-300"
             >
               &#10094;
             </button>
             <button
               onClick={() => setActiveIndex((prev) => (prev < recettes.length - 1 ? prev + 1 : 0))}
-              className="bg-[#fcf7f7] p-2 rounded-full"
+              className="bg-[#D5074C] hover:bg-[#FED766] p-2 rounded-full transition-colors duration-300"
             >
               &#10095;
             </button>
           </div>
+
 
           <div className="flex justify-center mt-4">
             {recettes.map((_, index) => (
@@ -124,11 +125,11 @@ const Home = () => {
               </i>
             </p>
           </div>
-          <img src="../../public/images/home/canard.jpg" alt="Magret de canard" />
+          <img src="../../images/home/canard.jpg" alt="Magret de canard" />
         </div>
 
         <div className="tips">
-          <img src="../../public/images/home/bavette.jpg" alt="Bavette de boeuf" />
+          <img src="../../images/home/bavette.jpg" alt="Bavette de boeuf" />
           <div className="tipsPres">
             <h3><i>Tips et Astuces</i></h3>
             <br />

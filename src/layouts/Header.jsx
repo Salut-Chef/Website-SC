@@ -44,13 +44,22 @@ const Header = () => {
           />
 
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
-            <Link to="/about" className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c]">
+            <Link
+              to="/about"
+              className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-[#d5074c] font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+            >
               À propos
             </Link>
-            <Link to="/recipes" className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c]">
+            <Link
+              to="/recipes"
+              className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-[#d5074c] font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+            >
               Nos recettes
             </Link>
-            <Link to="/tips" className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c]">
+            <Link
+              to="#"
+              className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-[#d5074c] font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+            >
               Tips et Astuces
             </Link>
             <Link
@@ -59,22 +68,39 @@ const Header = () => {
             >
               Contact
             </Link>
-
-            {/* Afficher "Profil" si l'utilisateur est connecté */}
-            {user ? (
-              <Link to="/profile" className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c]">
-                Profil
-              </Link>
-            ) : (
-              <Link to="/loginsignup" className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c]">
-                Se connecter / S'inscrire
-              </Link>
-            )}
           </div>
 
           <div className="flex items-center lg:order-2 hidden lg:flex">
-            <Link to="/" className="text-white hover:bg-[#d5074c]">
-              <img src="../../public/images/header/home.png" alt="Accueil" className="h-8 w-8" />
+            {/* Afficher "Profil" si l'utilisateur est connecté */}
+            {user ? (
+              <Link
+                to="/profile"
+                className="text-[#191715] text-[16px] mr-2 hover:text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-[#d5074c] font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+              >
+                <img
+                  src="/images/header/user.png"
+                  alt="Profil utilisateur"
+                  className="h-8 sm:h-8"
+                />
+              </Link>
+            ) : (
+              <Link
+                to="/loginsignup"
+                className="text-[#191715] text-[16px] mr-2 hover:text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-[#d5074c] font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+              >
+                <img
+                  src="/images/header/login.png"
+                  alt="Connexion / Inscription"
+                  className="h-8 sm:h-8"
+                />
+              </Link>
+            )}
+
+            <Link
+              to="/"
+              className="text-[#191715] text-[16px] hover:text-white hover:bg-[#d5074c] focus:ring-4 focus:ring-[#d5074c] font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
+            >
+              <img src="../../images/header/home.png" alt="Accueil" className="h-8 w-8" />
             </Link>
           </div>
 

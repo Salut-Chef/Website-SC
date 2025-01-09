@@ -4,16 +4,16 @@ import Footer from "../layouts/Footer";
 
 const About = () => {
     const teamMembers = [
-        { name: 'Hénan', description: "Gamer de cœur, ancien cuisinier, avec moi vous deviendrez des chefs pour vos nuits de tryhard !", photo: './public/Henan.jpg' },
-        { name: 'Mathis', description: "Supporter de cœur, cuisinier de passion : je cuisine avec la même intensité qu'un ultra en tribune. Des saveurs fortes pour des moments de partage uniques !", photo: './public/Mathis.JPG' },
+        { name: 'Hénan', description: "Gamer de cœur, ancien cuisinier, avec moi vous deviendrez des chefs pour vos nuits de tryhard !", photo: '/images/about/Henan.jpg' },
+        { name: 'Mathis', description: "Supporter de cœur, cuisinier de passion : je cuisine avec la même intensité qu'un ultra en tribune. Des saveurs fortes pour des moments de partage uniques !", photo: '/images/about/Mathis.JPG' },
         {
             name: 'Svetlana',
             description: "Moi, c'est Svet ou Svety pour les intimes. La cuisine, c'est comme un langage d'amour qui sait te réconforter. Sinon, mon passe-temps favori, c'est faire des combats de MMA avec mes courges quand il s'agit de les éplucher. Mon objectif à Salut Chef ? Faire en sorte que chaque bouchée soit un orgasme.",
-            photo: './public/Svetlana.jpg'
+            photo: '/images/about/Svetlana.jpg'
         },
-        { name: 'Audrey', description: "Qu'importe ce que je trouve dans le jardin de mes grands-parents, j'en fais un bon petit plat !", photo: './public/Audrey.jpg' },
-        { name: 'Toma', description: "Avec mon œil affûté, je transforme chaque instant en chef-d'œuvre visuel. En audiovisuel comme en cuisine, chaque détail compte pour créer l'exceptionnel !", photo: './public/toma.png' },
-        { name: 'Orlane', description: "Que ce soit en vidéo ou en cuisine, je donne vie aux idées avec passion et rigueur, pour offrir une expérience unique à chaque fois.", photo: './public/orlane.png' },
+        { name: 'Audrey', description: "Qu'importe ce que je trouve dans le jardin de mes grands-parents, j'en fais un bon petit plat !", photo: '/images/about/Audrey.jpg' },
+        { name: 'Toma', description: "Avec mon œil affûté, je transforme chaque instant en chef-d'œuvre visuel. En audiovisuel comme en cuisine, chaque détail compte pour créer l'exceptionnel !", photo: '/images/about/toma.png' },
+        { name: 'Orlane', description: "Que ce soit en vidéo ou en cuisine, je donne vie aux idées avec passion et rigueur, pour offrir une expérience unique à chaque fois.", photo: '/images/about/orlane.png' },
     ];
 
     return (
@@ -74,8 +74,8 @@ const About = () => {
             <div className="max-w-6xl mx-auto px-8 mb-32">
                 <div className="flex flex-col md:flex-row items-center justify-between mb-24">
                     <img
-                        src="../../public/SC_Lyon1.jpg"
-                        alt="Plat gastronomique"
+                        src="/images/about/SC_Lyon1.jpg"
+                        alt="Svetlana et Hénan"
                         className="w-96 h-64 object-cover object-top rounded-lg shadow-lg mb-8 md:mb-0"
                     />
                     <p className="md:ml-16 text-lg italic max-w-xl text-center md:text-left">
@@ -88,8 +88,8 @@ const About = () => {
                         Aujourd’hui, Salut Chef ! est en pleine expansion. Après 1 année complète passée sur la conceptualisation du projet, c’est désormais comme association que se définit Salut Chef !. Une association à destination de tous les étudiants désireux d’apprendre à cuisiner, une association pour les étudiants, par les étudiants.
                     </p>
                     <img
-                        src="../../public/Team.jpg"
-                        alt="Plat gastronomique"
+                        src="/images/about/Team.jpg"
+                        alt="Salut Chef en concertation"
                         className="w-96 h-64 object-cover object-top rounded-lg shadow-lg"
                     />
                 </div>

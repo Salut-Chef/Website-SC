@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth"; 
-import { auth } from "../../firebaseConfig"; 
-import Header from "../layouts/Header"; 
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../config/firebase.js";
+import Header from "../layouts/Header";
 
 const Profile = () => {
-  const [user, setUser] = useState(null);  
-  const navigate = useNavigate(); 
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-   
+
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        setUser(currentUser);  
+        // @ts-ignore
+        setUser(currentUser);
       } else {
-        navigate("/login");  
+        navigate("/login");
       }
     });
 
@@ -22,7 +23,7 @@ const Profile = () => {
   }, [navigate]);
 
   if (!user) {
-    return null;  
+    return null;
   }
 
   return (
@@ -30,16 +31,18 @@ const Profile = () => {
       <Header />
       <div className="profile-container">
         <h1>Bienvenue sur votre profil</h1>
-        <p>Email : {user.email}</p>
+        <p>Email : {user.
+          // @ts-ignore
+          email}</p>
         <button
           onClick={() => {
             signOut(auth)
               .then(() => {
-                  navigate("/"); 
-                    })
-                    .catch((error) => {
-                  console.error("Erreur de déconnexion :", error.message);
-                });
+                navigate("/");
+              })
+              .catch((error) => {
+                console.error("Erreur de déconnexion :", error.message);
+              });
 
           }}
         >

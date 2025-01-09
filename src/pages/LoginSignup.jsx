@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import de useNavigate pour la redirection
+import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebaseConfig.js"; 
+import { auth } from "../config/firebase.js";
 import "../style/loginsignup.css";
 
 const LoginSignup = () => {
-  const navigate = useNavigate(); // Hook de React Router pour la redirection
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Gestion de l'authentification
-  const [isSignupMode, setIsSignupMode] = useState(false); // Etat pour changer entre connexion et inscription
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isSignupMode, setIsSignupMode] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const LoginSignup = () => {
       setIsAuthenticated(true);
 
       // Redirection vers la page d'accueil ou une autre page après la connexion
-      navigate("/"); 
+      navigate("/");
     } catch (err) {
       console.error("Erreur de connexion:", err);
       setError(err.message);
@@ -38,8 +38,7 @@ const LoginSignup = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       console.log("Utilisateur créé:", user);
-      // Optionnel : rediriger vers la page de connexion ou la page d'accueil après l'inscription
-      navigate("/"); 
+      navigate("/");
     } catch (err) {
       console.error("Erreur d'inscription:", err);
       setError(err.message);
