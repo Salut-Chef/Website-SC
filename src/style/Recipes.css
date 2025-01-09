@@ -7,8 +7,7 @@
 
 /* Style général de la page */
 .recipes-page {
-  font-family: "Playfair Display", serif;
-  background-color: #fefaf5;
+  font-family: "haboro-soft", serif;
   color: #3e2723;
   padding: 30px;
 }
@@ -79,7 +78,7 @@
 /* Divider (separating categories) */
 .menu-divider {
   border: none;
-  border-top: 2px dashed #d7ccc8; 
+  border-top: 2px dashed #d7ccc8;
   margin: 20px 0;
 }
 

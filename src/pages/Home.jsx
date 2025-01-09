@@ -86,13 +86,13 @@ const Home = () => {
           <div className="absolute top-1/2 left-2 right-2 flex justify-between transform -translate-y-1/2">
             <button
               onClick={() => setActiveIndex((prev) => (prev > 0 ? prev - 1 : recettes.length - 1))}
-              className="bg-[#D5074C] hover:bg-[#FED766] p-2 rounded-full transition-colors duration-300"
+              className="bg-customRed hover:bg-customRed hover:scale-125 p-2 rounded-full duration-300"
             >
               &#10094;
             </button>
             <button
               onClick={() => setActiveIndex((prev) => (prev < recettes.length - 1 ? prev + 1 : 0))}
-              className="bg-[#D5074C] hover:bg-[#FED766] p-2 rounded-full transition-colors duration-300"
+              className="bg-customRed hover:bg-customRed hover:scale-125 p-2 rounded-full duration-300"
             >
               &#10095;
             </button>

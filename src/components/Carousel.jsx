@@ -75,13 +75,13 @@ const Carousel = ({ category, searchTerm }) => {
           <div className="absolute top-1/2 left-2 right-2 flex justify-between transform -translate-y-1/2">
             <button
               onClick={prevItem}
-              className="bg-[#D5074C] hover:bg-[#FED766] p-2 rounded-full transition-colors duration-300"
+              className="bg-customRed hover:bg-customRed hover:scale-125 p-2 rounded-full duration-300"
             >
               &#10094;
             </button>
             <button
               onClick={nextItem}
-              className="bg-[#D5074C] hover:bg-[#FED766] p-2 rounded-full transition-colors duration-300"
+              className="bg-customRed hover:bg-customRed hover:scale-125 p-2 rounded-full duration-300"
             >
               &#10095;
             </button>
