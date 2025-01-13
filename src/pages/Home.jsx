@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import "../style/index.css";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import { Link } from "react-router-dom";
@@ -30,21 +29,29 @@ const Home = () => {
       <Header />
 
       <div className="w-full h-[90vh] relative overflow-hidden">
-        <div className="inset-0 w-full h-full absolute backdrop-blur-[10px] z-10"></div>
+        <div className="absolute inset-0 w-full h-full backdrop-blur-[10px] z-10"></div>
         <div className="w-full h-full">
-          <img src="../../images/home/home_fire.JPG" alt="Test" className="w-full h-full object-cover object-left-center block" />
+          <img
+            src="../../images/home/home_fire.JPG"
+            alt="Test"
+            className="w-full h-full object-cover object-left-center block"
+          />
         </div>
-        <h1 className="text-customWhite absolute z-20">Salut Chef !</h1>
-        <p className="text-customWhite absolute z-20">
-          Ici, une mini-révolution culinaire est en marche... Dans le monde des
-          étudiants ! <br />
-          Un objectif : t&apos;améliorer en cuisine en découvrant de superbes
-          recettes adaptées à ton budget !
+        <h1 className="absolute top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-customWhite text-shadow-lg font-[prenton-ultra-condensed] text-[10.5vw] text-center z-20">
+          Salut Chef !
+        </h1>
+        <p className="absolute top-[80%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-customWhite text-shadow-lg italic text-sm text-center z-20">
+          Ici, une mini-révolution culinaire est en marche... Dans le monde des étudiants ! <br />
+          Un objectif : t&apos;améliorer en cuisine en découvrant de superbes recettes adaptées à ton budget !
         </p>
-        <Link to="/about" className="btn text-customWhite absolute z-20">
+        <Link
+          to="/about"
+          className="absolute top-[90%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-customWhite font-[prenton-ultra-condensed] text-lg bg-[#d5074c] px-4 py-1 rounded-md transition-transform duration-500 ease-in-out shadow-sm hover:shadow-inset z-20"
+        >
           En savoir +
         </Link>
       </div>
+
 
       <div className="homeContainer bg-framboise pt-[1em] pb-[2em]">
         <h2 className="text-left text-[4em] font-[prenton-ultra-condensed] text-customWhite ml-[0.6em]">
@@ -111,32 +118,40 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="recipes">
-          <div className="recipesPres">
-            <h3>
+        <div className="flex justify-center items-center mt-28 mx-48 gap-12">
+          <div className="flex flex-col justify-center items-center text-center">
+            <h3 className="text-customWhite font-[prenton-ultra-condensed] text-4xl mt-1.5 underline">
               <i>Nos recettes</i>
             </h3>
             <br />
-            <p>
+            <p className="text-[25px]">
               <i>
-                « Et paf ! Ça fait des Chocapic ! »
-                <br />
+                « Et paf ! Ça fait des Chocapic ! » <br />
                 De quoi vous métamorphoser en chef <br /> en quelques minutes !
               </i>
             </p>
           </div>
-          <img src="../../images/home/canard.jpg" alt="Magret de canard" />
+          <img
+            src="../../images/home/canard.jpg"
+            alt="Magret de canard"
+            className="border-5 border-customWhite rounded-[10px] shadow-[4px_4px_2px_rgba(25,23,21,0.5)] max-w-full h-auto"
+          />
         </div>
 
-        <div className="tips">
-          <img src="../../images/home/bavette.jpg" alt="Bavette de boeuf" />
-          <div className="tipsPres">
-            <h3><i>Tips et Astuces</i></h3>
+        <div className="flex justify-center items-center mt-28 mx-48 gap-12">
+          <img
+            src="../../images/home/bavette.jpg"
+            alt="Bavette de boeuf"
+            className="border-5 border-customWhite rounded-[10px] shadow-[4px_4px_2px_rgba(25,23,21,0.5)] max-w-full h-auto"
+          />
+          <div className="flex flex-col justify-center items-center text-center">
+            <h3 className="text-customWhite font-[prenton-ultra-condensed] text-4xl mt-1.5 underline">
+              <i>Tips et Astuces</i>
+            </h3>
             <br />
-            <p>
+            <p className="text-[25px]">
               <i>
-                « Elle est pas belle la vie ? »
-                <br />
+                « Elle est pas belle la vie ? » <br />
                 Un concentré d’astuces et de conseils <br /> en tous genres
                 disponibles au même endroit !
               </i>
