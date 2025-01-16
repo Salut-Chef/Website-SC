@@ -4,6 +4,8 @@ import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-tailwind/react";
+import ScrollToTop from "../components/ScrollToTop";
+import TopButton from "../components/TopButton";
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -27,6 +29,7 @@ const Home = () => {
   return (
     <div>
       <Header />
+      <ScrollToTop />
 
       <div className="w-full h-[90vh] relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full backdrop-blur-[10px] z-10"></div>
@@ -46,7 +49,7 @@ const Home = () => {
         </p>
         <Link
           to="/about"
-          className="absolute top-[90%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-customWhite font-[prenton-ultra-condensed] text-lg bg-[#d5074c] px-4 py-1 rounded-md transition-transform duration-500 ease-in-out shadow-sm hover:shadow-inset z-20"
+          className="absolute top-[90%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-customWhite font-[prenton-ultra-condensed] text-lg bg-[#d5074c] px-4 py-1 rounded-md transition-transform duration-500 ease-in-out hover:scale-125 z-20"
         >
           En savoir +
         </Link>
@@ -159,6 +162,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <TopButton />
       <Footer />
     </div>
   );

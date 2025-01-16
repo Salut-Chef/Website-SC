@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
+import ScrollToTop from "../components/ScrollToTop";
 
 const About = () => {
     const teamMembers = [
@@ -19,6 +20,7 @@ const About = () => {
     return (
         <div className="aboutPage bg-customWhite">
             <Header />
+            <ScrollToTop />
 
             {/* Team Section Title */}
             <div className="bgImgAbout"></div>
