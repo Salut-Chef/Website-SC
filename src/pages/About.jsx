@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import ScrollToTop from "../components/ScrollToTop";
+import TopButton from "../components/TopButton";
 
 const About = () => {
     const teamMembers = [
@@ -97,6 +98,7 @@ const About = () => {
                 </div>
             </div>
 
+            <TopButton />
             <Footer />
         </div>
     );

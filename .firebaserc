@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "salut-chef"
-  }
+    "default": "salut-chef",
+    "Salut Chef !": "salut-chef-bcc43"
+  },
+  "targets": {},
+  "etags": {}
 }

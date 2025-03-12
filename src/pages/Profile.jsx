@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../config/firebase.js";
 import Header from "../layouts/Header";
+import ScrollToTop from "../components/ScrollToTop.jsx";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -29,6 +30,8 @@ const Profile = () => {
   return (
     <div>
       <Header />
+      <ScrollToTop />
+
       <div className="profile-container">
         <h1>Bienvenue sur votre profil</h1>
         <p>Email : {user.

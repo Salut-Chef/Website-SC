@@ -5,6 +5,7 @@ import { auth } from "../config/firebase.js";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import ParticleBackground from "../components/Particle.tsx";
+import ScrollToTop from "../components/ScrollToTop.jsx";
 
 const LoginSignup = () => {
   const navigate = useNavigate();
@@ -45,8 +46,9 @@ const LoginSignup = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <ScrollToTop />
       <ParticleBackground />
-      
+
       <div className="flex-1 flex items-center justify-center px-4 relative z-10">
         <div className="w-full max-w-md">
           <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-8">
@@ -54,11 +56,10 @@ const LoginSignup = () => {
               <ul className="flex justify-center mb-6 border-b border-gray-200">
                 <li className="mr-4">
                   <button
-                    className={`px-4 py-2 text-sm font-medium transition-colors ${
-                      !isSignupMode
-                        ? "text-[#E76F51] border-b-2 border-[#E76F51]"
-                        : "text-gray-500 hover:text-[#E76F51]"
-                    }`}
+                    className={`px-4 py-2 text-sm font-medium transition-colors ${!isSignupMode
+                      ? "text-[#E76F51] border-b-2 border-[#E76F51]"
+                      : "text-gray-500 hover:text-[#E76F51]"
+                      }`}
                     onClick={() => setIsSignupMode(false)}
                   >
                     Se connecter
@@ -66,11 +67,10 @@ const LoginSignup = () => {
                 </li>
                 <li>
                   <button
-                    className={`px-4 py-2 text-sm font-medium transition-colors ${
-                      isSignupMode
-                        ? "text-[#E76F51] border-b-2 border-[#E76F51]"
-                        : "text-gray-500 hover:text-[#E76F51]"
-                    }`}
+                    className={`px-4 py-2 text-sm font-medium transition-colors ${isSignupMode
+                      ? "text-[#E76F51] border-b-2 border-[#E76F51]"
+                      : "text-gray-500 hover:text-[#E76F51]"
+                      }`}
                     onClick={() => setIsSignupMode(true)}
                   >
                     S'inscrire
