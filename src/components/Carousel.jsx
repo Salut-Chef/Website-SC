@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 import PropTypes from 'prop-types';
+import getImageFromStorage from '../utils/storage';
+import { Link, Links } from "react-router-dom";
 
 const initialRecipe = {
   id: '',
@@ -29,19 +31,26 @@ const Carousel = ({ category, searchTerm }) => {
         );
 
         const querySnapshot = await getDocs(q);
-        const recettesData = querySnapshot.docs.map(doc => {
-          const data = doc.data();
-          return {
-            id: doc.id,
-            title: data.title || '',
-            imageUrl: data.imageUrl || '',
-            timers: data.timers || [{ type: '', time: 0, unit: '' }],
-            ingredients: data.ingredients || [{ name: '', quantity: 0, unit: '' }],
-            steps: data.steps || [''],
-            created_at: data.created_at?.toDate() || null,
-            category: data.category || ''
-          };
-        });
+        const recettesData = await Promise.all(
+          querySnapshot.docs.map(async (doc) => {
+            const data = doc.data();
+            let imageUrl = data.imageUrl || "";
+            if (imageUrl && !imageUrl.startsWith("http")) {
+              imageUrl = await getImageFromStorage(imageUrl);
+            }
+
+            return {
+              id: doc.id,
+              title: data.title || "",
+              imageUrl,
+              timers: data.timers || [{ type: "", time: 0, unit: "" }],
+              ingredients: data.ingredients || [{ name: "", quantity: 0, unit: "" }],
+              steps: data.steps || [""],
+              created_at: data.created_at?.toDate() || null,
+              category: data.category || "",
+            };
+          })
+        );
 
         // Tri côté client
         recettesData.sort((a, b) => b.created_at - a.created_at);
@@ -73,15 +82,6 @@ const Carousel = ({ category, searchTerm }) => {
 
   const prevItem = () => {
     setActiveIndex((prev) => (prev > 0 ? prev - 1 : filteredItems.length - 1));
-  };
-
-  const formatTime = (time, unit) => {
-    if (unit === 'minutes') {
-      const hours = Math.floor(time / 60);
-      const minutes = time % 60;
-      return hours > 0 ? `${hours}h${minutes > 0 ? ` ${minutes}min` : ''}` : `${minutes}min`;
-    }
-    return `${time}${unit}`;
   };
 
   if (loading) {
@@ -116,13 +116,15 @@ const Carousel = ({ category, searchTerm }) => {
               <div
                 key={item.id}
                 className={`w-full flex-shrink-0 relative ${index === activeIndex ? "scale-100 z-10" : "scale-90 opacity-50 z-0"
-                  } transition-all duration-500`}
+                  } transition-all duration-500 mt-5`}
               >
-                <img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="w-full h-[350px] object-cover rounded-xl"
-                />
+                <Link to={`/${item.id}`}>
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="w-full h-[350px] object-cover rounded-xl"
+                  />
+                </Link>
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3 text-white rounded-b-lg">
                   <h3 className="text-lg font-bold">{item.title}</h3>
                 </div>

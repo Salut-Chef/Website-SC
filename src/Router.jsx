@@ -9,6 +9,7 @@ import LoginSignup from "./pages/LoginSignup";
 import Profile from "./pages/Profile.jsx"
 import About from "./pages/About";
 import Auth from "./components/auth";
+import RecipeDetails from "./pages/RecipeDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/auth",
     element: <Auth />
+  },
+  {
+    path: '/:id',
+    element: <RecipeDetails />
   }
 ])
 

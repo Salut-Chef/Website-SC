@@ -4,24 +4,9 @@ import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import TopButton from "../components/TopButton";
-import { addTestRecipe } from "../utils/addTestRecipe";
 
-export default function Recipes() {
+const Recipes = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [addingRecipe, setAddingRecipe] = useState(false);
-
-  const handleAddTestRecipe = async () => {
-    try {
-      setAddingRecipe(true);
-      await addTestRecipe();
-      alert("Recette de test ajoutée avec succès !");
-    } catch (error) {
-      console.error("Erreur :", error);
-      alert("Erreur lors de l'ajout de la recette de test");
-    } finally {
-      setAddingRecipe(false);
-    }
-  };
 
   return (
     <div>
@@ -80,3 +65,5 @@ export default function Recipes() {
     </div>
   );
 }
+
+export default Recipes;
