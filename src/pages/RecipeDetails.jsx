@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../config/firebase";
 import getImageFromStorage from "../utils/storage";
 import RecipeSteps from "../components/RecipeSteps";
+import { FaClock, FaCarrot, FaUtensils } from "react-icons/fa";
 
 const initialRecipe = {
   id: '',
@@ -78,38 +79,62 @@ const RecipeDetails = () => {
   }
 
   return (
-    <div>
+    <div className="bg-customWhite min-h-screen text-customBlack font-bodyFont">
       <Header />
-      <main className="p-[2em] bg-customWhite">
+      <main className="p-6 md:p-12">
         <section id="recipe">
-          <article>
-            <img
-              src={recipe.imageUrl}
-              alt={recipe.title}
-              className="w-full h-[350px] object-cover opacity-50"
-            />
-            <div className="p-4">
-              <h1 className="text-2xl font-bold mb-4">{recipe.title}</h1>
+          <article className="space-y-8">
+            <div className="relative w-full h-[350px] shadow-lg rounded-lg overflow-hidden">
+              <img
+                src={recipe.imageUrl}
+                alt={recipe.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 w-full h-full backdrop-blur-[3px] bg-black bg-opacity-30 z-10"></div>
+              <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-customWhite font-titleFont text-3xl md:text-5xl text-center z-20">
+                {recipe.title}
+              </h1>
+            </div>
 
-              <h2 className="text-xl font-semibold mt-4 mb-2">Ingrédients</h2>
-              <ul className="list-disc list-inside">
-                {recipe.ingredients.map((ing, index) => (
-                  <li key={index}>
-                    {ing.quantity} {ing.unit} {ing.name}
-                  </li>
-                ))}
-              </ul>
+            <div className="p-4 space-y-6">
+              {/* Temps de préparation */}
+              <div className="space-y-2">
+                <h2 className="flex items-center gap-2 text-xl font-semibold text-framboise">
+                  <FaClock className="text-citron" />
+                  Temps
+                </h2>
+                <ul className="list-none space-y-1">
+                  {recipe.timers.map((timer, index) => (
+                    <li key={index} className="text-sm text-gray-700">
+                      {timer.type} : {timer.time} {timer.unit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <RecipeSteps steps={recipe.steps} />
+              {/* Ingrédients */}
+              <div className="space-y-2">
+                <h2 className="flex items-center gap-2 text-xl font-semibold text-framboise">
+                  <FaCarrot className="text-mandarine" />
+                  Ingrédients
+                </h2>
+                <ul className="list-none space-y-1">
+                  {recipe.ingredients.map((ing, index) => (
+                    <li key={index} className="text-sm text-gray-700">
+                      {ing.quantity} {ing.unit} {ing.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <h2 className="text-xl font-semibold mt-4 mb-2">Temps</h2>
-              <ul>
-                {recipe.timers.map((timer, index) => (
-                  <li key={index}>
-                    {timer.type} : {timer.time} {timer.unit}
-                  </li>
-                ))}
-              </ul>
+              {/* Étapes de la recette */}
+              <div className="space-y-2">
+                <h2 className="flex items-center gap-2 text-xl font-semibold text-framboise">
+                  <FaUtensils className="text-citron" />
+                  Étapes
+                </h2>
+                <RecipeSteps steps={recipe.steps} />
+              </div>
             </div>
           </article>
         </section>
