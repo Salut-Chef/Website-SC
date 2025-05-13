@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../config/firebase";
 import getImageFromStorage from "../utils/storage";
+import RecipeSteps from "../components/RecipeSteps";
 
 const initialRecipe = {
   id: '',
@@ -99,12 +100,7 @@ const RecipeDetails = () => {
                 ))}
               </ul>
 
-              <h2 className="text-xl font-semibold mt-4 mb-2">Étapes</h2>
-              <ol className="list-decimal list-inside">
-                {recipe.steps.map((step, index) => (
-                  <li key={index}>{step}</li>
-                ))}
-              </ol>
+              <RecipeSteps steps={recipe.steps} />
 
               <h2 className="text-xl font-semibold mt-4 mb-2">Temps</h2>
               <ul>
