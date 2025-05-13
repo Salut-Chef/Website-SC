@@ -13,9 +13,9 @@ const Recipes = () => {
       <Header />
       <ScrollToTop />
 
-      <div className="p-[2em] bg-customWhite">
+      <main className="p-[2em] bg-customWhite">
         {/* Menu container */}
-        <div className="max-w-[800px] mx-auto p-[2em] bg-customWhite border rounded-[15px] shadow-shadowCustom">
+        <section className="max-w-[800px] mx-auto p-[2em] bg-customWhite border rounded-[15px] shadow-shadowCustom">
           <div className="menu-header">
             <h1 className="text-center font-titleFont text-4xl">Nos Recettes</h1>
           </div>
@@ -39,26 +39,26 @@ const Recipes = () => {
 
           <hr className="border-t-2 border-framboise my-4 mx-auto w-2/3 rounded-full shadow-md" />
 
-          <div className="text-center py-[1em]">
+          <article className="text-center py-[1em]">
             <h2 className="font-titleFont font text-3xl">Entrées</h2>
             <Carousel category="Entrée" searchTerm={searchTerm} />
-          </div>
+          </article>
 
           <hr className="border-t-2 border-framboise my-4 mx-auto w-2/3 rounded-full shadow-md" />
 
-          <div className="text-center py-[1em]">
+          <article className="text-center py-[1em]">
             <h2 className="font-titleFont font text-3xl">Plats principaux</h2>
             <Carousel category="Plat" searchTerm={searchTerm} />
-          </div>
+          </article>
 
           <hr className="border-t-2 border-framboise my-4 mx-auto w-2/3 rounded-full shadow-md" />
 
-          <div className="text-center py-[1em]">
+          <article className="text-center py-[1em]">
             <h2 className="font-titleFont font text-3xl">Desserts</h2>
             <Carousel category="Dessert" searchTerm={searchTerm} />
-          </div>
-        </div>
-      </div>
+          </article>
+        </section>
+      </main>
 
       <TopButton />
       <Footer />

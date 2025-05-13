@@ -3,15 +3,12 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 import PropTypes from 'prop-types';
 import getImageFromStorage from '../utils/storage';
-import { Link, Links } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const initialRecipe = {
   id: '',
   title: '',
   imageUrl: '',
-  timers: [{ type: '', time: 0, unit: '' }],
-  ingredients: [{ name: '', quantity: 0, unit: '' }],
-  steps: [''],
   created_at: null,
   category: ''
 };
@@ -23,7 +20,7 @@ const Carousel = ({ category, searchTerm }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const fetchRecettes = async () => {
+    const fetchRecipe = async () => {
       try {
         const q = query(
           collection(db, "recettes"),
@@ -43,9 +40,6 @@ const Carousel = ({ category, searchTerm }) => {
               id: doc.id,
               title: data.title || "",
               imageUrl,
-              timers: data.timers || [{ type: "", time: 0, unit: "" }],
-              ingredients: data.ingredients || [{ name: "", quantity: 0, unit: "" }],
-              steps: data.steps || [""],
               created_at: data.created_at?.toDate() || null,
               category: data.category || "",
             };
@@ -69,7 +63,7 @@ const Carousel = ({ category, searchTerm }) => {
       }
     };
 
-    fetchRecettes();
+    fetchRecipe();
   }, [category]);
 
   const filteredItems = items.filter((item) =>

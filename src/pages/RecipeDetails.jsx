@@ -1,29 +1,51 @@
 import { doc, getDoc } from "firebase/firestore";
+import Header from "../layouts/Header";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../config/firebase";
 import getImageFromStorage from "../utils/storage";
 
+const initialRecipe = {
+  id: '',
+  title: '',
+  imageUrl: '',
+  timers: [{ type: '', time: 0, unit: '' }],
+  ingredients: [{ name: '', quantity: 0, unit: '' }],
+  steps: [''],
+  created_at: null,
+  category: ''
+};
+
 const RecipeDetails = () => {
   const { id } = useParams();
-  const [recipe, setRecipe] = useState(null);
+  const [recipe, setRecipe] = useState(initialRecipe);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const collection = doc(db, "recettes", id);
-        const collecSnap = await getDoc(collection);
+        const docRef = doc(db, "recettes", id);
+        const docSnap = await getDoc(docRef);
 
-        if (collecSnap.exists()) {
-          const data = collecSnap.data();
+        if (docSnap.exists()) {
+          const data = docSnap.data();
           let imageUrl = data.imageUrl || "";
           if (imageUrl && !imageUrl.startsWith("http")) {
             imageUrl = await getImageFromStorage(imageUrl);
           }
 
-          setRecipe({ ...data, imageUrl });
+          setRecipe({
+            id: docSnap.id,
+            title: data.title || "",
+            imageUrl,
+            timers: data.timers || [{ type: "", time: 0, unit: "" }],
+            ingredients: data.ingredients || [{ name: "", quantity: 0, unit: "" }],
+            steps: data.steps || [""],
+            created_at: data.created_at?.toDate() || null,
+            category: data.category || "",
+          });
+          setError("");
         } else {
           setError("Recette introuvable.");
         }
@@ -55,12 +77,49 @@ const RecipeDetails = () => {
   }
 
   return (
-    <>
-      <main>
+    <div>
+      <Header />
+      <main className="p-[2em] bg-customWhite">
+        <section id="recipe">
+          <article>
+            <img
+              src={recipe.imageUrl}
+              alt={recipe.title}
+              className="w-full h-[350px] object-cover opacity-50"
+            />
+            <div className="p-4">
+              <h1 className="text-2xl font-bold mb-4">{recipe.title}</h1>
 
+              <h2 className="text-xl font-semibold mt-4 mb-2">Ingrédients</h2>
+              <ul className="list-disc list-inside">
+                {recipe.ingredients.map((ing, index) => (
+                  <li key={index}>
+                    {ing.quantity} {ing.unit} {ing.name}
+                  </li>
+                ))}
+              </ul>
+
+              <h2 className="text-xl font-semibold mt-4 mb-2">Étapes</h2>
+              <ol className="list-decimal list-inside">
+                {recipe.steps.map((step, index) => (
+                  <li key={index}>{step}</li>
+                ))}
+              </ol>
+
+              <h2 className="text-xl font-semibold mt-4 mb-2">Temps</h2>
+              <ul>
+                {recipe.timers.map((timer, index) => (
+                  <li key={index}>
+                    {timer.type} : {timer.time} {timer.unit}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        </section>
       </main>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default RecipeDetails
+export default RecipeDetails;
