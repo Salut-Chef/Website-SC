@@ -27,4 +27,4 @@ dist-ssr
 *.mp4
 /src/config/
 firebaseServiceAccountKey.json
-./scripts/setAdmin.js
+/scripts/

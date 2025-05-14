@@ -1,10 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 const AdminDashboard = () => {
   const { user, isAdmin } = useAuth();
+  const [users, setUsers] = useState([]);
+  const [loadingUsers, setLoadingUsers] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("/api/getUsers");
+        const data = await response.json();
+        setUsers(data);
+      } catch (err) {
+        console.error("Erreur lors de la récupération des utilisateurs", err);
+        setError("Une erreur est survenue lors de la récupération des utilisateurs.");
+      } finally {
+        setLoadingUsers(false);
+      }
+    };
+
+    if (isAdmin) {
+      fetchUsers();
+    }
+  }, [isAdmin]);
 
   if (!isAdmin) {
     return (
@@ -23,16 +45,10 @@ const AdminDashboard = () => {
         </div>
         <ul className="space-y-4">
           <li>
-            <Link to="/admin/statistiques" className="hover:text-customWhite">Statistiques</Link>
-          </li>
-          <li>
             <Link to="/admin/utilisateurs" className="hover:text-customWhite">Utilisateurs</Link>
           </li>
           <li>
             <Link to="/admin/recettes" className="hover:text-customWhite">Recettes</Link>
-          </li>
-          <li>
-            <Link to="/admin/settings" className="hover:text-customWhite">Paramètres</Link>
           </li>
         </ul>
       </div>
@@ -47,15 +63,11 @@ const AdminDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-xl shadow-lg">
             <Typography variant="h6" color="black">Nombre d'Utilisateurs</Typography>
-            <p className="text-3xl font-semibold mt-2">320</p>
+            <p className="text-3xl font-semibold mt-2">{users.length}</p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow-lg">
             <Typography variant="h6" color="black">Recettes Soumises</Typography>
             <p className="text-3xl font-semibold mt-2">58</p>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-lg">
-            <Typography variant="h6" color="black">Commentaires</Typography>
-            <p className="text-3xl font-semibold mt-2">127</p>
           </div>
         </div>
 
@@ -72,16 +84,26 @@ const AdminDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {/* Exemple d'utilisateur */}
-              <tr className="border-b">
-                <td className="py-2 px-4">John Doe</td>
-                <td className="py-2 px-4">john@example.com</td>
-                <td className="py-2 px-4">Utilisateur</td>
-                <td className="py-2 px-4">
-                  <button className="bg-framboise text-white py-1 px-4 rounded-md hover:bg-[#d5074c]">Modifier</button>
-                </td>
-              </tr>
-              {/* Ajouter d'autres utilisateurs ici */}
+              {loadingUsers ? (
+                <tr>
+                  <td colSpan="4" className="py-4 px-4 text-center">Chargement des utilisateurs...</td>
+                </tr>
+              ) : error ? (
+                <tr>
+                  <td colSpan="4" className="py-4 px-4 text-center text-red-500">{error}</td>
+                </tr>
+              ) : (
+                users.map((user) => (
+                  <tr key={user.uid} className="border-b">
+                    <td className="py-2 px-4">{user.displayName}</td>
+                    <td className="py-2 px-4">{user.email}</td>
+                    <td className="py-2 px-4">{user.role}</td>
+                    <td className="py-2 px-4">
+                      <button className="bg-framboise text-white py-1 px-4 rounded-md hover:bg-[#d5074c]">Modifier</button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
