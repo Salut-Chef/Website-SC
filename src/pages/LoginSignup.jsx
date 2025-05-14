@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../config/firebase.js";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
@@ -15,32 +18,51 @@ const LoginSignup = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSignupMode, setIsSignupMode] = useState(false);
 
+  const validatePassword = (pwd) => {
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    return regex.test(pwd);
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log("Utilisateur connecté:", user);
+      console.log("Utilisateur connecté:", userCredential.user);
       setIsAuthenticated(true);
+      setError("");
       navigate("/");
     } catch (err) {
       console.error("Erreur de connexion:", err);
-      setError(err.message);
+      setError("Email ou mot de passe incorrect.");
       setIsAuthenticated(false);
     }
   };
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    if (!validatePassword(password)) {
+      setError("Le mot de passe ne respecte pas les exigences.");
+      return;
+    }
+
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log("Utilisateur créé:", user);
+      console.log("Utilisateur créé:", userCredential.user);
+      setError("");
       navigate("/");
     } catch (err) {
       console.error("Erreur d'inscription:", err);
       setError(err.message);
     }
+  };
+
+  const passwordChecks = {
+    minLength: password.length >= 8,
+    hasUppercase: /[A-Z]/.test(password),
+    hasLowercase: /[a-z]/.test(password),
+    hasNumber: /\d/.test(password),
+    hasSpecialChar: /[\W_]/.test(password),
   };
 
   return (
@@ -49,7 +71,7 @@ const LoginSignup = () => {
       <ScrollToTop />
       <ParticleBackground />
 
-      <div className="flex-1 flex items-center justify-center px-4 relative z-10">
+      <div className="flex-1 flex items-center justify-center px-4 py-4 relative z-10">
         <div className="w-full max-w-md">
           <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-8">
             <div>
@@ -91,6 +113,7 @@ const LoginSignup = () => {
                       {error}
                     </div>
                   )}
+
                   <div className="mb-4">
                     <input
                       type="email"
@@ -101,7 +124,8 @@ const LoginSignup = () => {
                       className="w-full p-3 border border-gray-300 rounded-lg bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#E76F51] transition-all"
                     />
                   </div>
-                  <div className="mb-6">
+
+                  <div className="mb-2">
                     <input
                       type="password"
                       placeholder="Mot de passe"
@@ -111,6 +135,27 @@ const LoginSignup = () => {
                       className="w-full p-3 border border-gray-300 rounded-lg bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#E76F51] transition-all"
                     />
                   </div>
+
+                  {isSignupMode && (
+                    <ul className="text-sm mb-4 space-y-1">
+                      <li className={passwordChecks.minLength ? "text-green-600" : "text-black"}>
+                        • 8 caractères minimum
+                      </li>
+                      <li className={passwordChecks.hasUppercase ? "text-green-600" : "text-black"}>
+                        • 1 majuscule requise
+                      </li>
+                      <li className={passwordChecks.hasLowercase ? "text-green-600" : "text-black"}>
+                        • 1 minuscule requise
+                      </li>
+                      <li className={passwordChecks.hasSpecialChar ? "text-green-600" : "text-black"}>
+                        • 1 caractère spécial requis
+                      </li>
+                      <li className={passwordChecks.hasNumber ? "text-green-600" : "text-black"}>
+                        • 1 chiffre requis
+                      </li>
+                    </ul>
+                  )}
+
                   <div className="flex justify-center">
                     <button
                       type="submit"
