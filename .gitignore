@@ -26,3 +26,4 @@ dist-ssr
 *.sw?
 *.mp4
 /src/config/
+firebaseServiceAccountKey.json
