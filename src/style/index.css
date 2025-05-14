@@ -18,7 +18,7 @@ body {
   left: 0;
   right: 0;
   height: 550px;
-  background-image: url("../../public/images/about/Photo_Salut_Chef.png");
+  background-image: url("images/about/Photo_Salut_Chef.png");
   background-size: cover;
   background-position: center 40%;
   filter: blur(2px);

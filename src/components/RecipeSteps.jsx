@@ -8,8 +8,7 @@ const RecipeSteps = ({ steps }) => {
           <div
             key={index}
           >
-            <h3 className="font-semibold text-gray-700 mb-2">Etape {index + 1}</h3>
-            <div dangerouslySetInnerHTML={{ __html: step }} className="prose prose-sm sm:prose lg:prose-lg max-w-none text-gray-800">
+            <div dangerouslySetInnerHTML={{ __html: step }} className="prose prose-sm sm:prose lg:prose-lg max-w-none">
             </div>
           </div>
         ))
