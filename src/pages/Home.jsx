@@ -8,27 +8,13 @@ import TopButton from "../components/TopButton";
 import { collection, getDocs, query, orderBy, limit, doc, getDoc } from "firebase/firestore";
 import getImageFromStorage from "../utils/storage";
 import { db } from "../config/firebase";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useAuth } from "../contexts/AuthContext";
 
-/**
- * @typedef {Object} Recette
- * @property {string} id
- * @property {string} titre
- * @property {string} description
- * @property {string} image
- */
-
-
 const Home = () => {
+  const { user, isAdmin, loading } = useAuth();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  /** @type {[Recette[], Function]} */
   const [recettes, setRecettes] = useState([]);
-
-  const { isAdmin, loading: authLoading } = useAuth();
-  const [hasWelcomed, setHasWelcomed] = useState(false);
 
   useEffect(() => {
     const fetchLatestRecipes = async () => {
@@ -53,23 +39,14 @@ const Home = () => {
         }
 
         setRecettes(recettesData);
-        setLoading(false);
       } catch (err) {
         console.error("Erreur lors de la récupération des recettes :", err);
         setError("Impossible de charger les recettes.");
-        setLoading(false);
       }
     };
 
     fetchLatestRecipes();
   }, []);
-
-  useEffect(() => {
-    if (!authLoading && isAdmin && !hasWelcomed) {
-      alert("Bienvenue administrateur 👑");
-      setHasWelcomed(true);
-    }
-  }, [authLoading, isAdmin, hasWelcomed]);
 
   if (loading) {
     return (
@@ -181,6 +158,14 @@ const Home = () => {
             </>
           )}
         </div>
+
+        {/* Affichage de contenu spécifique aux admins */}
+        {isAdmin && (
+          <div className="text-center mt-8 text-customWhite">
+            <h3 className="text-2xl">Section réservée aux administrateurs</h3>
+            <p className="mt-4">Vous avez un accès exclusif à cette section pour gérer les recettes.</p>
+          </div>
+        )}
 
         <div className="flex flex-col lg:flex-row justify-center items-center mt-28 mx-4 lg:mx-48 gap-8 lg:gap-12">
           <div className="flex flex-col justify-center items-center text-center">
