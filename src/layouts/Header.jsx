@@ -37,11 +37,15 @@ const Header = () => {
     <header className="sticky top-0 z-50 ">
       <nav className="bg-customWhite border-gray-200 px-4 lg:px-6 py-1.5 shadow-md bg-customWhite">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <img
-            src="/images/Salut_Chef.png"
-            alt="Logo Salut Chef"
-            className="mr-3 h-10 sm:h-10"
-          />
+          <Link
+            to="/"
+          >
+            <img
+              src="/images/Salut_Chef.png"
+              alt="Logo Salut Chef"
+              className="mr-3 h-10 sm:h-10"
+            />
+          </Link>
 
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
             <Link
@@ -127,10 +131,11 @@ const Header = () => {
                 <Link to="/recipes" className="block py-2 px-4 text-[#191715] hover:bg-framboise">Nos recettes</Link>
               </li>
               <li>
-                <Link to="/profile" className="block py-2 px-4 text-[#191715] hover:bg-framboise">Profil</Link>
-              </li>
-              <li>
-                <Link to="/loginsignup" className="block py-2 px-4 text-[#191715] hover:bg-framboise">Se connecter / S'inscrire</Link>
+                {user ? (
+                  <Link to="/profile" className="block py-2 px-4 text-[#191715] hover:bg-framboise">Profil</Link>
+                ) : (
+                  <Link to="/loginsignup" className="block py-2 px-4 text-[#191715] hover:bg-framboise">Se connecter / S'inscrire</Link>
+                )}
               </li>
             </ul>
           </div>
