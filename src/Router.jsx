@@ -12,6 +12,7 @@ import Auth from "./components/auth";
 import RecipeDetails from "./pages/RecipeDetails.jsx";
 import Contact from "./pages/Contact.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
+import AdminDashboard from "./components/AdminDashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: '/contact',
     element: <Contact />
+  },
+  {
+    path: '/admin',
+    element: <AdminDashboard />
   }
 ])
 
