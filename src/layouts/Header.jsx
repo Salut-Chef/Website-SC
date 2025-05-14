@@ -60,12 +60,12 @@ const Header = () => {
             >
               Nos recettes
             </Link>
-            <Link
+            {/* <Link
               to="#"
               className="text-[#191715] text-[16px] hover:text-white hover:bg-framboise focus:ring-4 focus:ring-framboise font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
             >
               Tips et Astuces
-            </Link>
+            </Link> */}
             <Link
               to="/contact"
               className="text-[#191715] text-[16px] hover:text-white hover:bg-framboise focus:ring-4 focus:ring-framboise font-medium rounded-lg px-4 py-2 transition duration-500 ease-in-out"
