@@ -13,6 +13,7 @@ import RecipeDetails from "./pages/RecipeDetails.jsx";
 import Contact from "./pages/Contact.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import AdminDashboard from "./components/AdminDashboard.jsx";
+import CreateRecipe from "./pages/CreateRecipe.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: '/admin',
     element: <AdminDashboard />
+  },
+  {
+    path: '/admin/create',
+    element: <CreateRecipe />
   }
 ])
 

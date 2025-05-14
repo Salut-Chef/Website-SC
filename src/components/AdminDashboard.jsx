@@ -115,7 +115,7 @@ const AdminDashboard = () => {
               Liste des Recettes
             </Typography>
             <button
-              onClick={() => navigate('/admin/creer-recette')}
+              onClick={() => navigate('/admin/create')}
               className="bg-green-500 text-white py-1 px-4 rounded-md hover:bg-green-600 hover:shadow-[4px_4px_5px_0_rgba(0,0,0,0.75)] transition-shadow"
             >
               Créer
