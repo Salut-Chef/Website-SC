@@ -1,11 +1,14 @@
 import { doc, getDoc } from "firebase/firestore";
 import Header from "../layouts/Header";
+import Footer from "../layouts/Footer";
+import ScrollToTop from "../components/ScrollToTop";
+import TopButton from "../components/TopButton";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../config/firebase";
 import getImageFromStorage from "../utils/storage";
 import RecipeSteps from "../components/RecipeSteps";
-import { FaClock, FaCarrot, FaUtensils } from "react-icons/fa";
+import { FaClock, FaCarrot, FaUtensils, FaUserFriends } from "react-icons/fa";
 
 const initialRecipe = {
   id: '',
@@ -15,7 +18,8 @@ const initialRecipe = {
   ingredients: [{ name: '', quantity: 0, unit: '' }],
   steps: [''],
   created_at: null,
-  category: ''
+  category: '',
+  people: ''
 };
 
 const RecipeDetails = () => {
@@ -46,6 +50,7 @@ const RecipeDetails = () => {
             steps: data.steps || [""],
             created_at: data.created_at?.toDate() || null,
             category: data.category || "",
+            people: data.people || 0,
           });
           setError("");
         } else {
@@ -64,7 +69,7 @@ const RecipeDetails = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center min-h-[50vh]">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-framboise"></div>
       </div>
     );
@@ -72,75 +77,91 @@ const RecipeDetails = () => {
 
   if (error) {
     return (
-      <div className="text-center text-red-500 p-4">
-        {error}
-      </div>
+      <div className="text-center text-red-500 p-4">{error}</div>
     );
   }
 
   return (
     <div className="bg-customWhite min-h-screen text-customBlack font-bodyFont">
       <Header />
-      <main className="p-6 md:p-12">
+      <ScrollToTop />
+
+      <main className="p-4 md:p-8 lg:p-12">
         <section id="recipe">
           <article className="space-y-8">
-            <div className="relative w-full h-[350px] shadow-lg rounded-lg overflow-hidden">
+            {/* Image et titre */}
+            <div className="relative w-full h-[250px] md:h-[350px] shadow-lg rounded-lg overflow-hidden">
               <img
                 src={recipe.imageUrl}
                 alt={recipe.title}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 w-full h-full backdrop-blur-[3px] bg-black bg-opacity-30 z-10"></div>
-              <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-customWhite font-titleFont text-3xl md:text-5xl text-center z-20">
+              <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-customWhite font-titleFont text-2xl md:text-4xl lg:text-5xl text-center z-20">
                 {recipe.title}
               </h1>
             </div>
 
-            <div className="p-4 space-y-6">
-              {/* Temps de préparation */}
-              <div className="space-y-2">
-                <h2 className="flex items-center gap-2 text-xl font-semibold text-framboise">
-                  <FaClock className="text-citron" />
-                  Temps
-                </h2>
-                <ul className="list-none space-y-1">
-                  {recipe.timers.map((timer, index) => (
-                    <li key={index} className="text-sm text-gray-700">
-                      {timer.type} : {timer.time} {timer.unit}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {/* Informations */}
+            <div className="p-2 md:p-4 space-y-6">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-6 md:gap-8">
+                {/* Nombre de personnes */}
+                <div className="space-y-2 text-center md:text-left">
+                  <h2 className="flex justify-center md:justify-start items-center gap-2 text-lg md:text-xl font-semibold text-framboise">
+                    <FaUserFriends className="text-mandarine" />
+                    Personnes
+                  </h2>
+                  <p>Pour <b>{recipe.people}</b> personnes</p>
+                </div>
 
-              {/* Ingrédients */}
-              <div className="space-y-2">
-                <h2 className="flex items-center gap-2 text-xl font-semibold text-framboise">
-                  <FaCarrot className="text-mandarine" />
-                  Ingrédients
-                </h2>
-                <ul className="list-none space-y-1">
-                  {recipe.ingredients.map((ing, index) => (
-                    <li key={index} className="text-sm text-gray-700">
-                      {ing.quantity} {ing.unit} {ing.name}
-                    </li>
-                  ))}
-                </ul>
+                {/* Temps */}
+                <div className="space-y-2 text-center md:text-left">
+                  <h2 className="flex justify-center md:justify-start items-center gap-2 text-lg md:text-xl font-semibold text-framboise">
+                    <FaClock className="text-citron" />
+                    Temps
+                  </h2>
+                  <ul className="space-y-1">
+                    {recipe.timers.map((timer, index) => (
+                      <li key={index} className="text-sm text-gray-700">
+                        {timer.type} : {timer.time} {timer.unit}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Ingrédients */}
+                <div className="space-y-2 text-center md:text-left">
+                  <h2 className="flex justify-center md:justify-start items-center gap-2 text-lg md:text-xl font-semibold text-framboise">
+                    <FaCarrot className="text-mandarine" />
+                    Ingrédients
+                  </h2>
+                  <ul className="space-y-1">
+                    {recipe.ingredients.map((ing, index) => (
+                      <li key={index} className="text-sm text-gray-700">
+                        {ing.quantity} {ing.unit} {ing.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               {/* Étapes de la recette */}
               <div className="space-y-2">
-                <h2 className="flex items-center gap-2 text-xl font-semibold text-framboise">
+                <h2 className="flex items-center gap-2 text-lg md:text-xl font-semibold text-framboise">
                   <FaUtensils className="text-citron" />
-                  Étapes
+                  Description
                 </h2>
                 <RecipeSteps steps={recipe.steps} />
               </div>
             </div>
           </article>
         </section>
+
+        <TopButton />
+        <Footer />
       </main>
     </div>
   );
-};
+}
 
 export default RecipeDetails;
