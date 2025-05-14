@@ -9,6 +9,7 @@ import { collection, getDocs, query, orderBy, limit, doc, getDoc } from "firebas
 import getImageFromStorage from "../utils/storage";
 import { db } from "../config/firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useAuth } from "../contexts/AuthContext";
 
 /**
  * @typedef {Object} Recette
@@ -26,31 +27,12 @@ const Home = () => {
   /** @type {[Recette[], Function]} */
   const [recettes, setRecettes] = useState([]);
 
+  const { isAdmin, loading: authLoading } = useAuth();
+  const [hasWelcomed, setHasWelcomed] = useState(false);
+
   useEffect(() => {
-    const auth = getAuth();
-
-    const fetchLatestRecipesAndCheckAdmin = async () => {
+    const fetchLatestRecipes = async () => {
       try {
-        // 🔐 Vérification admin
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-          if (user) {
-            try {
-              const docRef = doc(db, "users", user.uid);
-              const userDoc = await getDoc(docRef);
-
-              if (userDoc.exists()) {
-                const userData = userDoc.data();
-                if (userData.role === "admin") {
-                  alert("Bienvenue administrateur");
-                }
-              }
-            } catch (err) {
-              console.error("Erreur lors de la récupération du rôle :", err);
-            }
-          }
-        });
-
-        // 🍽️ Récupération des recettes
         const recettesRef = collection(db, "recettes");
         const q = query(recettesRef, orderBy("created_at", "desc"), limit(3));
         const querySnapshot = await getDocs(q);
@@ -72,8 +54,6 @@ const Home = () => {
 
         setRecettes(recettesData);
         setLoading(false);
-
-        return () => unsubscribe(); // nettoyage de l'écouteur
       } catch (err) {
         console.error("Erreur lors de la récupération des recettes :", err);
         setError("Impossible de charger les recettes.");
@@ -81,8 +61,15 @@ const Home = () => {
       }
     };
 
-    fetchLatestRecipesAndCheckAdmin();
+    fetchLatestRecipes();
   }, []);
+
+  useEffect(() => {
+    if (!authLoading && isAdmin && !hasWelcomed) {
+      alert("Bienvenue administrateur 👑");
+      setHasWelcomed(true);
+    }
+  }, [authLoading, isAdmin, hasWelcomed]);
 
   if (loading) {
     return (
