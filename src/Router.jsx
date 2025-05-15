@@ -15,6 +15,7 @@ import { AuthProvider } from "./contexts/AuthContext.jsx";
 import AdminDashboard from "./components/AdminDashboard.jsx";
 import CreateRecipe from "./pages/CreateRecipe.jsx";
 import LegalMentions from "./pages/LegalMentions.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
   {
     path: '/mentions',
     element: <LegalMentions />
+  },
+  {
+    path: '/policy',
+    element: <PrivacyPolicy />
   }
 ])
 

@@ -1,11 +1,14 @@
 import React from "react";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
+import ScrollToTop from "../components/ScrollToTop";
+import TopButton from "../components/TopButton";
 
 export default function LegalMentions() {
   return (
     <div>
       <Header />
+      <ScrollToTop />
       <main className="bg-customWhite text-customBlack font-bodyFont px-6 py-10 md:px-20">
         <section className="max-w-5xl mx-auto space-y-8">
           <h1 className="text-4xl md:text-5xl font-titleFont text-framboise font-bold mb-4">
@@ -79,22 +82,9 @@ export default function LegalMentions() {
               2016/679 du 27 avril 2016 (« RGPD »).
             </p>
           </div>
-
-          <footer className="pt-6 text-sm text-customBlack">
-            <p>
-              Génération des mentions légales par{" "}
-              <a
-                href="https://www.legalstart.fr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-framboise underline hover:text-citron"
-              >
-                Legalstart.fr
-              </a>
-            </p>
-          </footer>
         </section>
       </main>
+      <TopButton />
       <Footer />
     </div>
   );
