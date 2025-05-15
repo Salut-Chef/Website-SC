@@ -116,7 +116,7 @@ const AdminDashboard = () => {
             </Typography>
             <button
               onClick={() => navigate('/admin/create')}
-              className="bg-green-500 text-white py-1 px-4 rounded-md hover:bg-green-600 hover:shadow-[4px_4px_5px_0_rgba(0,0,0,0.75)] transition-shadow"
+              className="bg-green-500 text-white py-1 px-4 rounded-md hover:bg-green-600 hover:shadow-shadowCustom transition-shadow"
             >
               Créer
             </button>
@@ -136,14 +136,14 @@ const AdminDashboard = () => {
                   <td className="py-2 px-4 text-center">{recipe.category}</td>
                   <td className="py-2 px-4 text-center">
                     <Link to={`/${recipe.id}`}>
-                      <button className="bg-framboise text-white py-1 px-4 rounded-md hover:bg-[#d5074c] mx-auto hover:shadow-[4px_4px_5px_0_rgba(0,0,0,0.75)] transition-shadow">
+                      <button className="bg-framboise text-white py-1 px-4 rounded-md hover:bg-[#d5074c] mx-auto hover:shadow-shadowCustom transition-shadow">
                         Voir
                       </button>
                     </Link>
                     {/* Bouton de suppression */}
                     <button
                       onClick={() => handleDeleteRecipe(recipe.id)}
-                      className="bg-red-500 text-white py-1 px-4 rounded-md hover:bg-red-600 ml-2 hover:shadow-[4px_4px_5px_0_rgba(0,0,0,0.75)] transition-shadow"
+                      className="bg-red-500 text-white py-1 px-4 rounded-md hover:bg-red-600 ml-2 hover:shadow-shadowCustom transition-shadow"
                     >
                       Supprimer
                     </button>

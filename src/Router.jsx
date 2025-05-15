@@ -14,6 +14,7 @@ import Contact from "./pages/Contact.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import AdminDashboard from "./components/AdminDashboard.jsx";
 import CreateRecipe from "./pages/CreateRecipe.jsx";
+import LegalMentions from "./pages/LegalMentions.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: '/admin/create',
     element: <CreateRecipe />
+  },
+  {
+    path: '/mentions',
+    element: <LegalMentions />
   }
 ])
 
