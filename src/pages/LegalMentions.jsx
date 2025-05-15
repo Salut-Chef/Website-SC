@@ -3,6 +3,7 @@ import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import TopButton from "../components/TopButton";
+import { Link } from "react-router-dom";
 
 export default function LegalMentions() {
   return (
@@ -77,7 +78,7 @@ export default function LegalMentions() {
             <p>
               Le traitement de vos données à caractère personnel est régi par notre
               Charte du respect de la vie privée, disponible depuis la section{" "}
-              <strong>"Charte de Protection des Données Personnelles"</strong>,
+              <strong><Link to="/policy">"Charte de Protection des Données Personnelles"</Link></strong>,
               conformément au Règlement Général sur la Protection des Données
               2016/679 du 27 avril 2016 (« RGPD »).
             </p>

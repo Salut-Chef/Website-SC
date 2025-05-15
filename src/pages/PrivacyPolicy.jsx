@@ -31,7 +31,6 @@ export default function PrivacyPolicy() {
               Nous pouvons collecter les données suivantes :
             </p>
             <ul className="list-disc list-inside ml-4 space-y-1">
-              <li>Nom et prénom</li>
               <li>Adresse email</li>
               <li>Données de connexion et de navigation</li>
               <li>Historique d’utilisation du site</li>
