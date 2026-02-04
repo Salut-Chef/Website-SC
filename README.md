@@ -65,7 +65,7 @@ Le projet vise à :
 ### Installation
 
 ```bash
-git clone https://github.com/Salut-Chef/Website-SC.git
+git clone [https://github.com/Salut-Chef/Website-SC.git](https://github.com/HenanAeroo/Website-SC.git)
 cd Website-SC
 npm install
 npm run dev
